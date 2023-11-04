@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  color: white;
+  background-color: #171717;
+}
+
+/* header {
+  flex: 0 0 auto;
+}
+
+footer {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 0 auto;
+} */
+
+.contact-input {
+  @apply outline-none focus:ring bg-[#18191e] border border-[#33353f] placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg block w-full p-2.5;
+}
+
+.wrapper-main {
+  @apply px-10 my-6 pb-6 sm:px-12 md:px-20 lg:py-4 2xl:px-4;
+}
+
+.wrapper-section {
+  @apply my-6 pb-6 md:my-12 md:pb-12;
+}
+
+.title-section {
+  @apply mb-6 text-center text-4xl font-bold text-white md:mb-12;
 }
