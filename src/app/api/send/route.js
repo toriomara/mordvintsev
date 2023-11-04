@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { EmailTemplate } from '@/components/EmailTemplate';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -12,18 +12,11 @@ export async function POST(req, res) {
       from: fromEmail,
       to: [fromEmail, email],
       subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted!</p>
-          <p>{message}</p>
-        </>
-      ),
+      react: EmailTemplate({ firstName: 'John' }),
     });
 
-    return NextResponse.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    return NextResponse.json({ error });
+    res.status(400).json(error);
   }
-}
+};
