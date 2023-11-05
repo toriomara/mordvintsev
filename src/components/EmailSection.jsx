@@ -6,34 +6,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    const data = {
-      email: evt.target.email.value,
-      subject: evt.target.subject.value,
-      message: evt.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = '/api/send';
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    };
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
-    console.log(resData);
-
-    if (response.status === 200) {
-      setEmailSubmitted(true);
-      console.log('Message sent');
-    }
-  };
-
   return (
     <section className='grid w-full md:grid-cols-2 wrapper-section gap-4'>
       <div className='z-10'>
@@ -53,7 +25,7 @@ export const EmailSection = () => {
         </div>
       </div>
       <div>
-        <form className='flex flex-col' onSubmit={handleSubmit}>
+        <form className='flex flex-col'>
           <div className='mb-6'>
             <label
               className='block mb-2 text-sm font-medium text-white'
@@ -106,11 +78,6 @@ export const EmailSection = () => {
           >
             Send Message
           </button>
-          {emailSubmitted && (
-            <p className='mt-2 text-sm text-green-500'>
-              Email sent successfuly!
-            </p>
-          )}
         </form>
       </div>
     </section>
