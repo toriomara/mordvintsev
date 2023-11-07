@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import GithubIcon from '../../public/images/github-icon.svg';
 import LinkedinIcon from '../../public/images/linkedin-icon.svg';
 import Link from 'next/link';

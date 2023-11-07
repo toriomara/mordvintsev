@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import NavLink from './NavLink';
+import { NavLink } from './NavLink';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import MenuOverlay from './MenuOverlay';
+import { useRouter, usePathname } from 'next/navigation';
 
 const navLinks = [
   { title: 'Главная', path: '/' },
@@ -14,6 +15,9 @@ const navLinks = [
 ];
 
 export const Navbar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
   const handleOpen = () => {
@@ -47,11 +51,23 @@ export const Navbar = () => {
           )}
         </div>
         <div className='menu hidden md:block md:w-auto' id='navbar'>
-          <ul className='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
+          <ul className='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 items-center'>
             {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
-              </li>
+              <Link
+                key={index}
+                href={link.path}
+                className={`${
+                  pathname === link.path
+                    ? 'bg-indigo-600 px-4 py-2 rounded-md'
+                    : 'block py-2 pl-3 pr-4 text-[#adb7be] sm:text-sl rounded md:p-0 hover:text-white'
+                }
+                `}
+              >
+                {link.title}
+              </Link>
+              // <li key={index}>
+              // <NavLink key={index} href={link.path} title={link.title} />
+              // </li>
             ))}
           </ul>
         </div>

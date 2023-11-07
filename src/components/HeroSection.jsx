@@ -15,7 +15,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className='col-span-7 place-self-center text-center sm:text-left justify-between'
         >
-          <h1 className='mb-4 2xl:text-7xl lg:text-6xl leading-normal sm:text-5xl text-4xl font-extrabold'>
+          <h1 className='mb-4 2xl:text-6xl lg:text-5xl leading-normal sm:text-5xl text-4xl font-extrabold'>
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600'>
               Р.Ф. Мордвинцев
             </span>
@@ -37,8 +37,10 @@ export const HeroSection = () => {
             />
           </h1>
           <p className='text-[#adb7be] text-base sm:text-lg mb-6 lg:text-xl'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem,
-            est! ПРивет 337!
+            Здравствуйте, я — адвокат по уголовным делам с более чем 12-летним
+            опытом. Также веду гражданские, арбитражные и дела об
+            административных правонарушениях. Предоставляю услуги семейного
+            адвоката и услуги юридического сопровождения бизнеса
           </p>
           <div className='grid gap-4 xs:flex justify-center sm:justify-start'>
             <button className='px-6 py-2 rounded-lg sm:w-fit sm:mr-4 bg-primary-500 hover:bg-primary-400 text-white'>

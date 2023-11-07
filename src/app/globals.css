@@ -13,6 +13,7 @@ body {
   min-height: 100%;
   color: white;
   background-color: #171717;
+  scrollbar-gutter: stable;
 }
 
 /* header {
@@ -26,6 +27,26 @@ footer {
 main {
   flex: 1 0 auto;
 } */
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d6d6d6ef;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #292929;
+  border: 1px solid transparent;
+}
 
 .contact-input {
   @apply outline-none focus:ring bg-[#18191e] border border-[#33353f] placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg block w-full p-2.5;
