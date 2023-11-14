@@ -8,16 +8,16 @@ import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 export const HeroSection = () => {
   return (
     <section className='lg:py-16'>
-      <div className='grid sm:grid-cols-12'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-10'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className='col-span-7 place-self-center text-center sm:text-left justify-between'
+          className='col-span-1 sm:col-span-1 xl:col-span-6 place-self-center text-center sm:text-left justify-between'
         >
-          <h1 className='mb-4 2xl:text-6xl lg:text-5xl leading-normal sm:text-5xl text-4xl font-extrabold'>
-            <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600'>
-              Р.Ф. Мордвинцев
+          <h1 className='mb-4 2xl:text-6xl lg:text-4xl sm:text-4xl text-4xl font-extrabold'>
+            <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500'>
+              Роман Фёдорович Мордвинцев
             </span>
             <br />
             <TypeAnimation
@@ -36,8 +36,8 @@ export const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className='text-[#adb7be] text-base sm:text-lg mb-6 lg:text-xl'>
-            Здравствуйте, я — адвокат по уголовным делам с более чем 12-летним
+          <p className='sm:text-lg mb-6 lg:text-xl'>
+            Здравствуйте. Я — адвокат по уголовным делам с более чем 12-летним
             опытом. Также веду гражданские, арбитражные и дела об
             административных правонарушениях. Предоставляю услуги семейного
             адвоката и услуги юридического сопровождения бизнеса
@@ -68,7 +68,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className='col-span-4'
+          className='flex col-span-1 justify-center items-center xl:justify-end sm:col-span-1 xl:col-span-6'
         >
           <div className='relative rounded-full bg-[#222222] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px]'>
             <Image

@@ -30,8 +30,8 @@ export const CTAStats = () => {
             к квалифицированному защитнику*
           </p>
           <dl className='mt-10 max-w-xl space-y-8 text-base leading-7  lg:max-w-none'>
-            {features.map((feature) => (
-              <div key={feature.name} className='relative pl-9'>
+            {features.map((feature, index) => (
+              <div key={index} className='relative pl-9'>
                 <dt className='inline font-semibold '>
                   <feature.icon
                     className='absolute left-1 top-1 h-5 w-5 text-primary-600'

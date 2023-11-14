@@ -64,7 +64,7 @@ export const achievementsList = [
   {
     prefix: "~",
     metric: "Успешных дел",
-    value: "100,000",
+    value: "800",
   },
   {
     metric: "Awards",
@@ -72,7 +72,8 @@ export const achievementsList = [
   },
   {
     metric: "Лет опыта",
-    value: "12",
+    value: "15",
+    postfix: "+",
   },
 ];
 

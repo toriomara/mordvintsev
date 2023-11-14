@@ -51,7 +51,7 @@ export const AboutSection = () => {
 
   return (
     <section className='grid md:grid-cols-2 gap-8 items-start xl:gap-16 md:my-12 md:pb-12'>
-      <Image src='/images/work-space.jpg' width={500} height={500} alt='' />
+      <Image src='' width={500} height={500} alt='' />
       <div className='flex flex-col h-full mt-4 md:mt-0 text-left'>
         <h2 className='title-section md:text-start mb-4 md:mb-6'>Обо мне</h2>
         <p className='text-base lg:text-lg'>

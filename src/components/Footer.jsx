@@ -4,7 +4,6 @@ import {
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
-  FaTwitter,
   FaTelegramPlane,
   FaVk,
   FaOdnoklassniki,
@@ -38,7 +37,10 @@ export const Footer = () => {
           <div className='grid lg:col-span-4 gap-3 mt-4 md:col-span-1'>
             <h4 className='font-semibold text-xl'>Контакты</h4>
             <Link href='/' className='flex items-start'>
-              <FaMapMarkerAlt size={16} className='relative top-0.5 mr-3' />
+              <FaMapMarkerAlt
+                size={16}
+                className='relative top-0.5 mr-3 text-gray-500'
+              />
               <span className='leading-5'>
                 400005, г. Волгоград, <br />
                 ул. Коммунистическая, д.21, оф. 46
@@ -49,7 +51,10 @@ export const Footer = () => {
               href='mailto:r.mordvintseff@ya.ru'
               passHref={true}
             >
-              <FaEnvelope size={16} className='relative top-0.5 mr-3' />
+              <FaEnvelope
+                size={16}
+                className='relative top-0.5 mr-3 text-gray-500'
+              />
               <span>r.mordvintseff@yandex.ru</span>
             </Link>
             <Link
@@ -57,7 +62,10 @@ export const Footer = () => {
               href='tel:+79608670139'
               passHref={true}
             >
-              <FaPhoneAlt size={16} className='relative top-0.5 mr-3' />
+              <FaPhoneAlt
+                size={16}
+                className='relative top-0.5 mr-3 text-gray-500'
+              />
               <span>+7 960 867 01 39</span>
             </Link>
           </div>
