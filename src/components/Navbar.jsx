@@ -26,8 +26,8 @@ export const Navbar = () => {
   };
 
   return (
-    <header className='border-b dark:border-[#33353f]'>
-      <nav className='flex max-w-screen-xl mx-auto px-10 my-6 sm:px-12 md:px-20 2xl:px-4 items-center justify-between'>
+    <header className='border-b border-custom'>
+      <nav className='flex items-center justify-between max-w-screen-xl mx-auto wrapper-footer'>
         <div className='flex items-center gap-6'>
           <Link className='text-2xl md:text-3xl font-semibold' href='/'>
             LOGO
@@ -58,8 +58,8 @@ export const Navbar = () => {
                 href={link.path}
                 className={`${
                   pathname === link.path
-                    ? 'bg-indigo-600 px-4 py-2 rounded-md'
-                    : 'block py-2 pl-3 pr-4  sm:text-sl rounded md:p-0 hover:text-white '
+                    ? 'px-4 py-2 text-white bg-secondary-600 rounded-md'
+                    : 'block py-2 pl-3 pr-4  sm:text-sl rounded md:p-0 hover:text-secondary-600 '
                 }
                 `}
               >

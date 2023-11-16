@@ -36,23 +36,20 @@ export const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className='sm:text-lg mb-6 lg:text-xl'>
+          <p className='mb-6 '>
             Здравствуйте. Я — адвокат по уголовным делам с более чем 12-летним
             опытом. Также веду гражданские, арбитражные и дела об
             административных правонарушениях. Предоставляю услуги семейного
             адвоката и услуги юридического сопровождения бизнеса
           </p>
           <div className='grid gap-4 xs:flex justify-center sm:justify-start'>
-            <button className='px-6 py-2 rounded-lg sm:w-fit sm:mr-4 bg-primary-500 hover:bg-primary-400 text-white'>
+            <button className='px-6 py-2 rounded-lg sm:w-fit sm:mr-4 bg-primary-500 border border-transparent text-white hover:text-primary-500 hover:bg-transparent hover:border hover:border-primary-500'>
               <Link className='flex' href='tel:+79608670139' passHref={true}>
                 <FaPhoneAlt size={16} className='relative top-0.5 mr-3' />
                 Позвонить
               </Link>
             </button>
-            <button
-              style={{ border: '1px solid white' }}
-              className='px-6 py-2 rounded-lg sm:w-fit hover:bg-neutral-800'
-            >
+            <button className='px-6 py-2 rounded-lg sm:w-fit text-primary-500 border border-primary-500 hover:text-white hover:bg-primary-500'>
               <Link
                 className='flex items-start'
                 href='mailto:r.mordvintseff@yandex.ru'

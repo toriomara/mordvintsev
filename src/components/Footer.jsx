@@ -12,9 +12,9 @@ import {
 
 export const Footer = () => {
   return (
-    <footer className='bg-gray-300 dark:bg-gradient-to-r from-neutral-700 to-neutral-900'>
-      <div className='wrapper-main max-w-screen-xl mx-auto'>
-        <div className='grid py-4 text-base font-light md:grid-cols-2 lg:grid-cols-12 grid-cols-1 gap-6 justify-between items-start text-gray-900 bg:dark:text-neutral-200 dark:text-neutral-300'>
+    <footer className='border-t border-custom'>
+      <div className='wrapper-footer max-w-screen-xl mx-auto'>
+        <div className='border-b border-custom grid pb-6 font-light md:grid-cols-2 lg:grid-cols-12 grid-cols-1 gap-6 justify-between items-start text-gray-900 bg:dark:text-neutral-200 dark:text-neutral-300'>
           <div className='grid gap-4 lg:col-span-4 md:col-span-1'>
             <Image src='/logo.svg' width={200} height={36} alt='Лого' />
             <h4 className='font-semibold text-xl'>Адвокат Р.Ф. Мордвинцев</h4>
@@ -73,13 +73,13 @@ export const Footer = () => {
           <div className='grid lg:col-span-2 gap-6 mt-4 md:col-span-1'>
             <h4 className='font-semibold text-xl'>Вопрос</h4>
             <span className='text-lg leading-6'>Задать вопрос адвокату</span>
-            <button className='bg-primary-500 text-zinc-900 w-full font-medium py-2 rounded-md'>
+            <button className='bg-primary-500 text-white w-full font-medium py-2 rounded-md hover:opacity-80'>
               Отправить
             </button>
           </div>
         </div>
-        <hr className='border-[#33353f] sm:mx-auto dark:bg-gradient-to-r from-neutral-900 to-neutral-700 max-w-7xl mx-auto' />
-        <div className='max-w-screen-xl mx-auto sm:flex sm:items-center sm:justify-between pt-4'>
+        {/* <hr className='border-[#33353f] sm:mx-auto dark:bg-gradient-to-r from-neutral-900 to-neutral-700 max-w-7xl mx-auto' /> */}
+        <div className='max-w-screen-xl mx-auto sm:flex sm:items-center sm:justify-between pt-6'>
           <span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
             © {new Date().getFullYear()} Адвокат Р.Ф. Мордвинцев. Все права
             защищены
