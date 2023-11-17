@@ -3,6 +3,7 @@ import GithubIcon from '../../public/images/github-icon.svg';
 import LinkedinIcon from '../../public/images/linkedin-icon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from './ui/buttons';
 
 export const EmailSection = () => {
   return (
@@ -71,12 +72,9 @@ export const EmailSection = () => {
               placeholder="Let's talk about..."
             />
           </div>
-          <button
-            className='bg-primary-500 hover:bg-primary-700 text-white font-medium py-2.5 px-5 rounded-lg w-full'
-            type='submit'
-          >
-            Send Message
-          </button>
+          <Button className='w-full' type='submit'>
+            Отправить
+          </Button>
         </form>
       </div>
     </section>

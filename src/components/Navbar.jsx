@@ -26,7 +26,7 @@ export const Navbar = () => {
   };
 
   return (
-    <header className='border-b border-custom'>
+    <header className='border-b border-custom bg-gray-50 dark:bg-black'>
       <nav className='flex items-center justify-between max-w-screen-xl mx-auto wrapper-footer'>
         <div className='flex items-center gap-6'>
           <Link className='text-2xl md:text-3xl font-semibold' href='/'>

@@ -75,22 +75,19 @@ export const AboutSection = () => {
             selectTab={() => handleTabChange('skills')}
             active={tab === 'skills'}
           >
-            {' '}
-            Области права{' '}
+            Области права
           </TabButton>
           <TabButton
             selectTab={() => handleTabChange('education')}
             active={tab === 'education'}
           >
-            {' '}
-            Образование{' '}
+            Образование
           </TabButton>
           <TabButton
             selectTab={() => handleTabChange('certification')}
             active={tab === 'certification'}
           >
-            {' '}
-            Достижения{' '}
+            Достижения
           </TabButton>
         </div>
         <div className='mt-8'>{TAB_DATA.find((t) => t.id === tab).content}</div>

@@ -12,15 +12,20 @@ import {
 
 export const Footer = () => {
   return (
-    <footer className='border-t border-custom'>
+    <footer className='border-t border-custom bg-gray-50 dark:bg-black'>
       <div className='wrapper-footer max-w-screen-xl mx-auto'>
         <div className='border-b border-custom grid pb-6 font-light md:grid-cols-2 lg:grid-cols-12 grid-cols-1 gap-6 justify-between items-start text-gray-900 bg:dark:text-neutral-200 dark:text-neutral-300'>
           <div className='grid gap-4 lg:col-span-4 md:col-span-1'>
             <Image src='/logo.svg' width={200} height={36} alt='Лого' />
             <h4 className='font-semibold text-xl'>Адвокат Р.Ф. Мордвинцев</h4>
-            <p className=''>
+            <a
+              className='cursor:pointer'
+              href='https://www.apvo-volgograd.ru/lawyer-list/register-lawyers/'
+              target='blank'
+              rel='noopener noreferrer'
+            >
               № 34/1803 в реестре адвокатов Волгоградской области
-            </p>
+            </a>
             <p className=''>
               Деятельность осуществляется на основе Федерального закона от 31
               мая 2002 г. N 63-ФЗ «Об адвокатской деятельности и адвокатуре в
