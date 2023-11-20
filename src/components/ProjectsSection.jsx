@@ -24,7 +24,7 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <section className='wrapper-main' id='projects'>
+    <section className='wrapper-section' id='projects'>
       <h2 className='title-section'>Статьи из блога</h2>
       <div className='flex flex-row justify-center items-center text-white gap-2 py-6'>
         <ProjectTag

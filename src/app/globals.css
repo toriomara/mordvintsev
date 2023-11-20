@@ -125,7 +125,7 @@ main {
 }
 
 .input-simple {
-  @apply outline-none focus:ring bg-slate-50 dark:bg-[#18191e] border border-[#b9b9b9] dark:border-[#33353f] placeholder-slate-800 dark:placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg;
+  @apply outline-none focus:ring bg-slate-50 dark:bg-[#18191e] border border-[#b9b9b9] dark:border-[#33353f] placeholder-slate-800 dark:placeholder-[#9ca2a9] text-gray-100 text-sm rounded-md;
 }
 
 .contact-input {
@@ -134,6 +134,10 @@ main {
 
 .wrapper-main {
   @apply px-10 my-6 pb-6 sm:px-12 md:px-20 lg:py-4 2xl:px-4;
+}
+
+.wrapper-header {
+  @apply px-10 py-2 md:px-10 md:py-6 sm:px-12 lg:px-20 2xl:px-4;
 }
 
 .wrapper-footer {

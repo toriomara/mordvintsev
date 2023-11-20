@@ -8,34 +8,36 @@ import { Button, ButtonOutlined } from './ui/buttons';
 
 export const HeroSection = () => {
   return (
-    <section className='lg:py-16'>
-      <div className='grid grid-cols-1 sm:grid-cols-5 xl:grid-cols-12 gap-10'>
+    <section className='wrapper-section'>
+      <div className='grid grid-cols-1 sm:grid-cols-6 xl:grid-cols-12 gap-4'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className='col-span-1 sm:col-span-3 xl:col-span-7 place-self-center text-center sm:text-left justify-between'
+          className='col-span-1 sm:col-span-3 xl:col-span-6 place-self-center text-center sm:text-left justify-between'
         >
-          <h1 className='mb-4 font-extrabold text-3xl xs:text-4xl sm:text-[30px] md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl leading-8 sm:leading-8'>
+          <h1 className='mb-4 font-extrabold text-2xl xs:text-4xl sm:text-[26px] md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl leading-8 sm:leading-8'>
             <span className='text-secondary-400 '>
               Роман&nbsp;Фёдорович Мордвинцев
             </span>
             <br />
-            {/* <TypeAnimation
-              sequence={[
-                'Уголовный адвокат',
-                1000,
-                'Семейный адвокат',
-                1000,
-                'Гражданские дела',
-                1000,
-                'Арбитраж',
-                1000,
-              ]}
-              wrapper='span'
-              speed={10}
-              repeat={Infinity}
-            /> */}
+            <span className='text-2xl'>
+              <TypeAnimation
+                sequence={[
+                  'Уголовный адвокат',
+                  1000,
+                  'Семейный адвокат',
+                  1000,
+                  'Гражданские дела',
+                  1000,
+                  'Арбитраж',
+                  1000,
+                ]}
+                wrapper='span'
+                speed={10}
+                repeat={Infinity}
+              />
+            </span>
           </h1>
           <p className='mb-6 leading-56 text-base md:text-lg'>
             Здравствуйте. Я — адвокат по уголовным делам с более чем 12-летним
@@ -43,7 +45,7 @@ export const HeroSection = () => {
             административных правонарушениях. Предоставляю услуги семейного
             адвоката и услуги юридического сопровождения бизнеса
           </p>
-          <div className='grid gap-4 xs:flex justify-center sm:justify-start'>
+          <div className='gap-4 grid xs:flex sm:grid lg:flex justify-center sm:justify-start'>
             <Button className=''>
               <Link
                 className='flex items-center'
@@ -70,15 +72,15 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className='flex col-span-1 justify-center items-center xl:justify-end sm:col-span-2 xl:col-span-5'
+          className='flex col-span-1 py-10 xs:py-14 sm:py-0 sm:col-span-3 xl:col-span-6 justify-center items-center md:justify-end'
         >
-          <div className='relative rounded-full bg-gray-200 dark:bg-[#222222] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px]'>
+          <div className='relative rounded-full bg-gray-200 dark:bg-zinc-800 w-[200px] h-[200px] xs:w-[250px] xs:h-[250px] lg:w-[400px] lg:h-[400px]'>
             <Image
               className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
-              src='/images/121213.png'
-              alt='/images/121213.png'
-              width={400}
-              height={400}
+              src='/images/heroPhoto.png'
+              alt='Фото адвоката Р.Ф. Мордвинцева'
+              width={350}
+              height={350}
             />
           </div>
         </motion.div>

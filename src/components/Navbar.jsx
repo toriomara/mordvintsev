@@ -2,10 +2,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { IoClose, IoMenuSharp } from 'react-icons/io5';
-import MenuOverlay from './MenuOverlay';
-import { useRouter, usePathname } from 'next/navigation';
+import { BurgerMenu } from './BurgerMenu';
+import { usePathname } from 'next/navigation';
 import { ModeToggle } from './ModeToggle';
 import { SearchInput } from './SearchInput';
+import { ModalSearch } from './ModalSearch';
 
 const navLinks = [
   { title: 'Главная', path: '/' },
@@ -16,18 +17,17 @@ const navLinks = [
 ];
 
 export const Navbar = () => {
-  const router = useRouter();
   const pathname = usePathname();
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleChangeStatus = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
 
   return (
     <header className='border-b border-custom bg-gray-50 dark:bg-black'>
-      <nav className='flex items-center justify-between max-w-screen-xl mx-auto wrapper-footer'>
+      <nav className='flex items-center justify-between max-w-screen-xl mx-auto wrapper-header'>
         <div className='flex items-center gap-6'>
           <Link className='text-2xl md:text-3xl font-semibold' href='/'>
             LOGO
@@ -36,7 +36,10 @@ export const Navbar = () => {
           <ModeToggle />
         </div>
         <div className='mobile-menu block md:hidden'>
-          <button className='flex items-center px-2 py-2' onClick={handleOpen}>
+          <button
+            className='flex items-center px-2 py-2'
+            onClick={handleChangeStatus}
+          >
             {!isNavbarOpen ? (
               <IoMenuSharp
                 className='fill-black hover:fill-slate-600 dark:fill-slate-200 dark:hover:fill-white'
@@ -59,7 +62,7 @@ export const Navbar = () => {
                 className={`${
                   pathname === link.path
                     ? 'px-4 py-2 text-white bg-secondary-600 rounded-md'
-                    : 'block py-2 pl-3 pr-4  sm:text-sl rounded md:p-0 hover:text-secondary-600 '
+                    : 'block py-2 pl-3 pr-4 sm:text-sl rounded md:p-0 hover:text-secondary-600'
                 }
                 `}
               >
@@ -69,7 +72,13 @@ export const Navbar = () => {
           </ul>
         </div>
       </nav>
-      {isNavbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {isNavbarOpen ? (
+        <BurgerMenu
+          links={navLinks}
+          isNavbarOpen={isNavbarOpen}
+          onClose={handleChangeStatus}
+        />
+      ) : null}
     </header>
   );
 };

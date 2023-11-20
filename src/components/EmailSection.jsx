@@ -8,7 +8,7 @@ import { Button } from './ui/buttons';
 export const EmailSection = () => {
   return (
     <section className='grid w-full md:grid-cols-2 wrapper-section gap-6'>
-      <div className='z-10'>
+      <div className=''>
         <h5 className='text-xl font-bold mb-2'>Let&apos;s Connect</h5>
         <p className='text-[#adb7be] mb-4 max-w-md'>
           I&apos;m currently looking for new opportunities, my inbox is always

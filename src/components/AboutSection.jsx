@@ -51,10 +51,10 @@ export const AboutSection = () => {
 
   return (
     <section className='grid md:grid-cols-2 gap-8 items-start xl:gap-16 md:my-12 md:pb-12'>
-      <Image src='' width={500} height={500} alt='' />
+      <Image src='' width={200} height={500} alt='' />
       <div className='flex flex-col h-full mt-4 md:mt-0 text-left'>
         <h2 className='title-section md:text-start mb-4 md:mb-6'>Обо мне</h2>
-        <p className='text-base lg:text-lg'>
+        {/* <p className='text-base lg:text-lg'>
           [Здесь нужно больше информации о профессиональном пути]
           <br />
           <br />
@@ -69,7 +69,7 @@ export const AboutSection = () => {
           iure? Quo nulla maxime officiis ipsam animi commodi iste nostrum in,
           aliquam similique alias voluptatibus at, numquam optio tenetur
           inventore dolores necessitatibus modi fuga sequi magnam.
-        </p>
+        </p> */}
         <div className='flex flex-row justify-start mt-8'>
           <TabButton
             selectTab={() => handleTabChange('skills')}
