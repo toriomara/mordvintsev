@@ -36,7 +36,6 @@ export const ModeToggle = () => {
 
   const handleModeToggle = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
-    console.log('HELLO');
   };
 
   return (

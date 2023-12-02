@@ -26,6 +26,25 @@ export const SearchInput = () => {
     }
   }, [handleChange, isOpen]);
 
+  useEffect(() => {
+    function handleOpenByKeys(evt) {
+      if (evt.ctrlKey && evt.keyCode === 75) {
+        evt.preventDefault();
+        handleChange();
+      }
+    }
+
+    document.addEventListener('keydown', handleOpenByKeys);
+
+    return () => {
+      document.removeEventListener('keydown', handleOpenByKeys);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+  }, [isOpen]);
+
   return (
     <>
       <div className='justify-center hidden lg:flex'>
@@ -38,7 +57,7 @@ export const SearchInput = () => {
             name='search'
             id='search'
             className='input-simple w-48 h-8 md:h-10 border-0 py-1.5 pl-7 pr-20 sm:text-sm sm:leading-6 cursor-pointer'
-            placeholder='Поиск   Ctrl Ksadasd'
+            placeholder='Поиск Ctrl K'
             onClick={handleChange}
           />
         </div>

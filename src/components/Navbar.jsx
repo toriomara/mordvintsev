@@ -26,8 +26,9 @@ export const Navbar = () => {
   };
 
   return (
-    <header className='border-b border-custom bg-gray-50 dark:bg-black'>
-      <nav className='flex items-center justify-between max-w-screen-xl mx-auto wrapper-header'>
+    <header className='sticky top-0 backdrop-filter backdrop-blur bg-background/50 border-b border-custom z-10'>
+      {/* delete include after */}
+      <nav className='wrapper-header flex items-center justify-between max-w-screen-xl'>
         <div className='flex items-center gap-6'>
           <Link className='text-2xl md:text-3xl font-semibold' href='/'>
             LOGO
@@ -60,6 +61,7 @@ export const Navbar = () => {
                 key={index}
                 href={link.path}
                 className={`${
+                  // pathname.includes(link.path)
                   pathname === link.path
                     ? 'px-4 py-2 text-white bg-secondary-600 rounded-md'
                     : 'block py-2 pl-3 pr-4 sm:text-sl rounded md:p-0 hover:text-secondary-600'
