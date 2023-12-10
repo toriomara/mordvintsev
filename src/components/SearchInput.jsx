@@ -56,8 +56,8 @@ export const SearchInput = () => {
             type='text'
             name='search'
             id='search'
-            className='input-simple w-48 h-8 md:h-10 border-0 py-1.5 pl-7 pr-20 sm:text-sm sm:leading-6 cursor-pointer'
-            placeholder='Поиск Ctrl K'
+            className='input-simple w-48 h-8 md:h-10 border-0 py-1.5 pl-9 pr-20 sm:text-sm sm:leading-6 cursor-pointer'
+            placeholder='Ctrl K'
             onClick={handleChange}
           />
         </div>

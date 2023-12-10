@@ -1,59 +1,45 @@
 import Link from 'next/link';
-import Post from './[id]/page';
 import Image from 'next/image';
+import { getAllPosts } from '@/utils/fetchData';
 
 export const metadata = {
   title: 'Блог | Адвокат Р.Ф. Мордвинцев',
-};
-
-export const getAllPosts = async () => {
-  const res = await fetch('http://localhost:3010/api/posts');
-
-  if (!res.ok) throw new Error('Невозможно отобразить данные');
-
-  return res.json();
+  description: 'Блог адвоката Романа Фёдоровича Мордвинцева',
 };
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const data = await getAllPosts();
+  const posts = data.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
 
   return (
     <div className='wrapper-main'>
       <div className='wrapper-section'>
         <h1 className='title-section'>Блог</h1>
-        <div>
-          <ul className='grid md:grid-cols-3 gap-4 md:gap-y-8 md:gap-x-6'>
-            {posts.map((post) => (
-              <BlogCard
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                description={post.description}
-              />
-            ))}
-          </ul>
+        <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-y-8 md:gap-x-6'>
+          {posts.map((post) => (
+            <Link
+              className='rounded-md border border-custom'
+              href={`/blog/${post.id}`}
+              key={post.id}
+            >
+              <article>
+                <Image
+                  className=''
+                  src={post.image}
+                  alt={post.title}
+                  height={300}
+                  width={200}
+                />
+                <div className='py-6'>
+                  <h5 className='text-lg font-semibold'>{post.title}</h5>
+                </div>
+              </article>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
 }
-
-const BlogCard = (props) => {
-  const { title, description, id } = props;
-
-  return (
-    <Link className='bg-neutral-600 rounded-md' href={`/blog/${id}`}>
-      <Image
-        className='rounded-md'
-        src='/images/projects/1.png'
-        alt='Blog article'
-        height={300}
-        width={200}
-      />
-      <div className='text-white px-4 py-6 mt-3'>
-        <h5 className='text-xl font-xl font-semibold mb-2'>{title}</h5>
-        <p className='text-[#adb7be]'>{description}</p>
-      </div>
-    </Link>
-  );
-};

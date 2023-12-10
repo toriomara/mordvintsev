@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import {
-  CloudArrowUpIcon,
   LockClosedIcon,
   ServerIcon,
   FireIcon,

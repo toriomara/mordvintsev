@@ -6,7 +6,6 @@ import { BurgerMenu } from './BurgerMenu';
 import { usePathname } from 'next/navigation';
 import { ModeToggle } from './ModeToggle';
 import { SearchInput } from './SearchInput';
-import { ModalSearch } from './ModalSearch';
 
 const navLinks = [
   { title: 'Главная', path: '/' },
@@ -26,9 +25,9 @@ export const Navbar = () => {
   };
 
   return (
-    <header className='sticky top-0 backdrop-filter backdrop-blur bg-background/50 border-b border-custom z-10'>
+    <header className='sticky top-0 backdrop-blur bg-background/50 border-b border-custom z-10'>
       {/* delete include after */}
-      <nav className='wrapper-header flex items-center justify-between max-w-screen-xl'>
+      <nav className='wrapper-header mx-auto flex items-center justify-between max-w-screen-xl'>
         <div className='flex items-center gap-6'>
           <Link className='text-2xl md:text-3xl font-semibold' href='/'>
             LOGO
