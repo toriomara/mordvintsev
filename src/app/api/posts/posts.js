@@ -1,7 +1,7 @@
 export const posts = [
   {
     id: 1,
-    title: " mother had always taught him",
+    title: "His mother had always taught him",
     body: "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
     userId: 9,
     tags: [
@@ -11,7 +11,7 @@ export const posts = [
     ],
     reactions: 2,
     createdAt: "2022-07-28T17:49:40.269Z",
-    image: "https://www.cnet.com/a/img/resize/ea66ddc9276eef2884da221adc70ed1cf1545951/hub/2021/10/16/11804578-0dbc-42af-bcd1-3bc7b1394962/the-batman-2022-teaser-poster-batman-01-promo.jpg?auto=webp&fit=crop&height=675&width=1200"
+    image: "https://images.unsplash.com/photo-1701822839967-06308ce8f99c?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const posts = [
     ],
     reactions: 2,
     createdAt: "2023-07-28T17:49:40.269Z",
-    image: "../images/projects/1.png"
+    image: "https://images.unsplash.com/photo-1701822839967-06308ce8f99c?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 3,

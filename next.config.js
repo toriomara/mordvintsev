@@ -5,26 +5,20 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'tailwindui.com',
-        port: '',
-        pathname: '*'
+        // port: '',
+        // pathname: '*'
       },
       {
         protocol: 'https',
         hostname: 'unsplash.com',
-        port: '',
-        pathname: '*'
       },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '**'
       },
       {
         protocol: 'https',
         hostname: 'firebasestorage.googleapis.com',
-        port: '',
-        pathname: '**'
       }
     ]
   },
