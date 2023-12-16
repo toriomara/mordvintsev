@@ -10,9 +10,8 @@ const getAllPosts = async () => {
     cache: 'no-cache',
   });
   if (!res.ok) throw new Error('Невозможно отобразить данные');
-  const posts = await res.json();
 
-  return posts;
+  return res.json();
 };
 
 const getPostById = async (id) => {
@@ -59,6 +58,7 @@ export {
   getUserPosts,
   getUsers,
   getPostById,
+  getPostBySearch,
 };
 
 // https://jsonplaceholder.typicode.com/posts
