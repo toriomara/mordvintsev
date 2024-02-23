@@ -51,7 +51,13 @@ export const AboutSection = () => {
 
   return (
     <section className='grid md:grid-cols-2 gap-8 items-start xl:gap-16 md:my-12 md:pb-12'>
-      <Image src='' width={200} height={500} alt='' />
+      <Image
+        src='https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        // width={200}
+        width={150}
+        height={150}
+        alt='Noname'
+      />
       <div className='flex flex-col h-full mt-4 md:mt-0 text-left'>
         <h2 className='title-section md:text-start mb-4 md:mb-6'>Обо мне</h2>
         {/* <p className='text-base lg:text-lg'>

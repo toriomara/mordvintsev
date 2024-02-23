@@ -1,12 +1,19 @@
-import Link from 'next/link';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export const NavLink = ({ href, title }) => {
+export const NavLink = ({ link }) => {
+  const pathname = usePathname();
   return (
     <Link
-      className='block py-2 pl-3 pr-4 text-[#adb7be] sm:text-sl rounded md:p-0 hover:text-white'
-      href={href}
+      className={`${
+        // pathname.includes(link.path)
+        pathname === link.path
+          ? "text-red-500 text-lg"
+          : "hover:text-red-300 text-lg"
+      }`}
+      href={link.path}
     >
-      {title}
+      {link.title}
     </Link>
   );
 };

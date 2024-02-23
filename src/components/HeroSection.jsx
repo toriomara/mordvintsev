@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
-import { Button, ButtonOutlined } from './ui/buttons';
+// import { Button, ButtonOutlined } from './ui/buttons';
+
+import { Button } from '@/components/ui/button';
 
 export const HeroSection = () => {
   return (
@@ -46,7 +48,7 @@ export const HeroSection = () => {
             адвоката и услуги юридического сопровождения бизнеса
           </p>
           <div className='gap-4 grid xs:flex sm:grid lg:flex justify-center sm:justify-start'>
-            <Button className=''>
+            <Button className='bg-popover' variant='link'>
               <Link
                 className='flex items-center'
                 href='tel:+79608670139'
@@ -56,7 +58,7 @@ export const HeroSection = () => {
                 Позвонить
               </Link>
             </Button>
-            <ButtonOutlined className='px-6 py-2'>
+            <Button className='px-6 py-2'>
               <Link
                 className='flex items-center'
                 href='mailto:r.mordvintseff@yandex.ru'
@@ -65,7 +67,7 @@ export const HeroSection = () => {
                 <FaEnvelope size={16} className='relative mr-3' />
                 Написать
               </Link>
-            </ButtonOutlined>
+            </Button>
           </div>
         </motion.div>
         <motion.div

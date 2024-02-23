@@ -9,6 +9,7 @@ import {
   FaOdnoklassniki,
   FaWhatsapp,
 } from 'react-icons/fa';
+import { Button } from './ui/button';
 
 export const Footer = () => {
   return (
@@ -34,14 +35,16 @@ export const Footer = () => {
           </div>
           <div className='grid lg:col-span-2 gap-3 mt-4 md:col-span-1'>
             <h4 className='font-semibold text-xl'>Информация</h4>
-            <Link href='/'>Главная</Link>
-            <Link href='/services'>Услуги</Link>
-            <Link href='/about'>Об адвокате</Link>
-            <Link href='/blog'>Блог</Link>
+            <div className='grid gap-1 xs:gap-3'>
+              <Link href='/'>Главная</Link>
+              <Link href='/services'>Услуги</Link>
+              <Link href='/about'>Об адвокате</Link>
+              <Link href='/blog'>Блог</Link>
+            </div>
           </div>
           <div className='grid lg:col-span-4 gap-3 mt-4 md:col-span-1'>
             <h4 className='font-semibold text-xl'>Контакты</h4>
-            <Link href='/' className='flex items-start'>
+            <Link href='/' className='flex items-start text-sm xs:text-base'>
               <FaMapMarkerAlt
                 size={16}
                 className='relative top-0.5 mr-3 text-gray-500'
@@ -52,7 +55,7 @@ export const Footer = () => {
               </span>
             </Link>
             <Link
-              className='flex items-start'
+              className='flex items-start text-sm xs:text-base'
               href='mailto:r.mordvintseff@ya.ru'
               passHref={true}
             >
@@ -63,7 +66,7 @@ export const Footer = () => {
               <span>r.mordvintseff@yandex.ru</span>
             </Link>
             <Link
-              className='flex items-start'
+              className='flex items-start text-sm xs:text-base'
               href='tel:+79608670139'
               passHref={true}
             >
@@ -77,13 +80,12 @@ export const Footer = () => {
 
           <div className='grid lg:col-span-2 gap-6 mt-4 md:col-span-1'>
             <h4 className='font-semibold text-xl'>Вопрос</h4>
-            <span className='text-lg leading-6'>Задать вопрос адвокату</span>
-            <button className='bg-primary-500 text-white w-full font-medium py-2 rounded-md hover:opacity-80'>
-              Отправить
-            </button>
+            <span className='text-sm xs:text-base leading-6'>
+              Задать вопрос адвокату
+            </span>
+            <Button variant='outline'>Отправить</Button>
           </div>
         </div>
-        {/* <hr className='border-[#33353f] sm:mx-auto dark:bg-gradient-to-r from-neutral-900 to-neutral-700 max-w-7xl mx-auto' /> */}
         <div className='max-w-screen-xl mx-auto sm:flex sm:items-center sm:justify-between pt-6'>
           <span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
             © {new Date().getFullYear()} Адвокат Р.Ф. Мордвинцев. Все права
@@ -103,6 +105,14 @@ export const Footer = () => {
               className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
               passHref={true}
             >
+              <FaWhatsapp size={24} />
+              <span className='sr-only'>Whatsapp page</span>
+            </Link>
+            <Link
+              href='#'
+              className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+              passHref={true}
+            >
               <FaVk size={24} />
               <span className='sr-only'>Vkontakte page</span>
             </Link>
@@ -113,14 +123,6 @@ export const Footer = () => {
             >
               <FaOdnoklassniki size={24} />
               <span className='sr-only'>Odnoklassniki page</span>
-            </Link>
-            <Link
-              href='#'
-              className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
-              passHref={true}
-            >
-              <FaWhatsapp size={24} />
-              <span className='sr-only'>Whatsapp page</span>
             </Link>
           </div>
         </div>

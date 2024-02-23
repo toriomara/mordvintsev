@@ -1,112 +1,40 @@
-// import { Suspense } from 'react';
-// import { Loader } from '@/components/ui/loader';
-// import { getAllPosts, getPostById } from '@/utils/fetchData';
-
-// export async function generateStaticParams() {
-//   const posts = await getAllPosts();
-
-//   return posts.map((post) => ({
-//     id: post.id.toString(),
-//   }));
-// }
-
-// export const Post = async ({ params: { id } }) => {
-//   const [post] = await getAllPosts(id);
-//   console.log(post);
-
-//   return (
-//     <div className='wrapper-main'>
-//       <Suspense fallback={<Loader />}>
-//         <h1>{post.body}</h1>
-//       </Suspense>
-//     </div>
-//   );
-// };
-
-// export default Post;
-
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// import { Suspense } from 'react';
-// import { Loader } from '@/components/ui/loader';
-// import { getAllPosts, getPostById } from '@/utils/fetchData';
-
-// export const Post = async ({ params }) => {
-//   const post = params;
-//   console.log(post);
-
-//   return (
-//     <div className='wrapper-main'>
-//       <Suspense fallback={<Loader />}>
-//         <h1>{post.body}</h1>
-//       </Suspense>
-//     </div>
-//   );
-// };
-
-// export default Post;
-
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 import { Suspense } from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Loader } from '@/components/ui/loader';
-import { getAllPosts, getPostById } from '@/utils/fetchData';
+import { getPostById } from '@/utils/fetchData';
+import { DeletePost } from '@/components/DeletePost';
+import { EditPost } from '@/components/EditPost';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
-const Post = async ({ params: { itemId } }) => {
-  console.log(itemId);
-
-  const posts = await getAllPosts();
-
-  const arr = Array.from(posts);
-  console.log(arr);
-
-  const resultObject = arr.filter((p) => p.id === itemId);
-
-  console.log(resultObject);
-
-  // function search(id, myArray) {
-  //   for (let i = 0; i < myArray.length; i++) {
-  //     if (myArray[i].id === id) {
-  //       return myArray[i];
-  //     }
-  //   }
-  // }
-  // const resultObject = search(id, arr);
-  // console.log(resultObject);
+export default async function Post({ params }) {
+  const post = await getPostById(params.id);
+  const postId = post.id;
+  console.log('postId =>', postId);
 
   try {
     return (
       <div className='wrapper-main'>
         <Suspense fallback={<Loader />}>
-          <Item itemId={resultObject} />
+          {/* <Breadcrumb capitalizeLinks /> */}
+          <article className=''>
+            <h1 className='py-6 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+              {post.title}
+            </h1>
+            <div className='relative h-64 w-full'>
+              <Image className='' src={post.image} alt={post.title} fill />
+            </div>
+            <p className='leading-7 [&:not(:first-child)]:mt-6'>{post.text}</p>
+            <div className=''></div>
+            <div className='flex gap-4 py-4'>
+              <DeletePost id={postId} />
+              <EditPost id={postId} />
+            </div>
+          </article>
         </Suspense>
       </div>
     );
   } catch (error) {
     return notFound();
   }
-};
-
-const Item = async (itemId) => {
-  const item = await getPostById(itemId);
-
-  return (
-    <div>
-      <h2 className='text-white text-3xl'>{item.title}</h2>
-      <h3>{item.body}</h3>
-      <Image
-        className=''
-        src={item.image}
-        alt={item.title}
-        height={300}
-        width={200}
-      />
-    </div>
-  );
-};
-
-export default Post;
+}

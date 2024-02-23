@@ -7,15 +7,17 @@ const basicFetch = async (endpoint) => {
 
 const getAllPosts = async () => {
   const res = await fetch('http://localhost:3010/api/posts', {
-    cache: 'no-cache',
+    cache: 'no-store',
   });
-  if (!res.ok) throw new Error('Невозможно отобразить данные');
+  if (!res.ok) throw new Error('Невозможно отобразить посты');
 
   return res.json();
 };
 
 const getPostById = async (id) => {
-  const res = await fetch(`http://localhost:3010/api/posts/${id}`);
+  const res = await fetch(`http://localhost:3010/api/posts/${id}`, {
+    next: { revalidate: 3600 },
+  });
   if (!res.ok) throw new Error('Невозможно отобразить пост');
 
   return res.json();

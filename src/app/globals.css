@@ -51,76 +51,56 @@ main {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --base: 0 0% 10%;
-
-    --primary-50: 200, 90%, 96.1%;
-    --primary-100: 198.8, 88.9%, 92.9%;
-    --primary-200: 199.4, 89.5%, 85.1%;
-    --primary-300: 198.9, 88.5%, 76.1%;
-    --primary-400: 199.1, 89.1%, 64.1%;
-    --primary-500: 198.6, 88.7%, 48.4%;
-    --primary-600: 199, 88.4%, 44.1%;
-    --primary-700: 199, 88.9%, 39%;
-    --primary-800: 199, 89%, 32%;
-    --primary-900: 198.9, 88.5%, 23.9%;
-    --primary-950: 198.5, 89.5%, 14.9%;
-
-    --secondary-50: 37.9, 90.5%, 95.9%;
-    --secondary-100: 38.2, 94.3%, 93.1%;
-    --secondary-200: 37.7, 92.1%, 85.1%;
-    --secondary-300: 37.9, 92.4%, 74.1%;
-    --secondary-400: 37.9, 92.6%, 63.1%;
-    --secondary-500: 37.7, 92.1%, 50.2%;
-    --secondary-600: 38.1, 92.1%, 44.9%;
-    --secondary-700: 38, 92%, 39%;
-    --secondary-800: 37.9, 91.7%, 33.1%;
-    --secondary-900: 37.7, 91.9%, 24.1%;
-    --secondary-950: 38.4, 92.6%, 15.9%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --base: 0 0% 100%;
-
-    --primary-50: 138.5, 76.5%, 96.7%;
-    --primary-100: 140.6, 84.2%, 92.5%;
-    --primary-200: 141, 78.9%, 85.1%;
-    --primary-300: 141.7, 76.6%, 73.1%;
-    --primary-400: 141.9, 69.2%, 58%;
-    --primary-500: 142.1, 70.6%, 45.3%;
-    --primary-600: 142.1, 76.2%, 36.3%;
-    --primary-700: 142.4, 71.8%, 29.2%;
-    --primary-800: 142.8, 64.2%, 24.1%;
-    --primary-900: 143.8, 61.2%, 20.2%;
-    --primary-950: 144.9, 80.4%, 10%;
-
-    --secondary-50: 250, 100%, 97.6%;
-    --secondary-100: 251.4, 91.3%, 95.5%%;
-    --secondary-200: 250.5, 95.2%, 91.8%;
-    --secondary-300: 252.5, 94.7%, 85.1%;
-    --secondary-400: 255.1, 91.7%, 76.3%;
-    --secondary-500: 258.3, 89.5%, 66.3%;
-    --secondary-600: 262.1, 83.3%, 57.8%;
-    --secondary-700: 263.4, 70%, 50.4%;
-    --secondary-800: 263.4, 69.3%, 42.2%;
-    --secondary-900: 3263.5, 67.4%, 34.9%;
-    --secondary-950: 261.2, 72.6%, 22.9%;
-
-    --tres-50: 33.3, 100%, 96.5%;
-    --tres-100: 34.3, 100%, 91.8%;
-    --tres-200: 32.1, 97.7%, 83.1%;
-    --tres-300: 30.7, 97.2%, 72.4%;
-    --tres-400: 27, 96%, 61%;
-    --success-500: 24.6, 95%, 53.1%;
-    --tres-600: 20.5, 90.2%, 48.2%;
-    --tres-700: 17.5, 88.3%, 40.4%;
-    --tres-800: 15, 79.1%, 33.7%;
-    --tres-900: 15.3, 74.6%, 27.8%;
-    --tres-950: 13, 81.1%, 14.5%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 20.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
   }
+}
 
+@layer base {
+  * {
+    @apply border-border;
+  }
   body {
-    @apply bg-background text-base-900;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -133,15 +113,15 @@ main {
 }
 
 .wrapper-main {
-  @apply px-10 my-6 pb-6 sm:px-12 md:px-20 lg:py-4 2xl:px-4;
+  @apply px-6 my-4 pb-3 xs:px-8 xs:my-6 xs:pb-4 sm:px-12 md:px-20 lg:py-4 2xl:px-4;
 }
 
 .wrapper-header {
-  @apply px-10 py-2 md:px-20 md:py-6 sm:px-12 lg:px-20 2xl:px-4;
+  @apply px-6 py-2 xs:px-8 md:px-20 md:py-6 sm:px-12 lg:px-20 2xl:px-4;
 }
 
 .wrapper-footer {
-  @apply px-10 py-6 sm:px-12 md:px-20 2xl:px-4;
+  @apply px-6 py-4 xs:px-8 sm:px-12 md:px-20 2xl:px-4;
 }
 
 .wrapper-section {
