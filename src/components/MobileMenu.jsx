@@ -11,67 +11,50 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { IoClose, IoMenuSharp } from "react-icons/io5";
+import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "./ui/mode-toggle";
 
 export function MobileMenu({ links }) {
-  const isDesktop = useMediaQuery("(max-width: 768px)");
-  // const [open, setOpen] = React.useState(true);
-
-  // const handleClose = () => {
-  //   setOpen(!open);
-  // };
+  const isDesktop = useMediaQuery("(max-width: 1024px)");
 
   return (
-    isDesktop &&
-    // open && 
-    (
+    isDesktop && (
       <Drawer direction="right">
         <DrawerTrigger asChild>
-          <Button variant="none">
-            <IoMenuSharp
-              className="fill-black hover:fill-slate-600 dark:fill-slate-200 dark:hover:fill-white"
-              size={24}
-            />
+          <Button variant="ghost" size="icon">
+            <HamburgerMenuIcon />
           </Button>
         </DrawerTrigger>
-        <DrawerContent>
-          <div className="grid h-full w-4/5 mx-auto bottom-0 top-0 right-0">
-            <DrawerHeader className="grid auto-rows-min">
-              <DrawerClose className="place-self-end" asChild>
-                <Button className="p-2" variant="outline">
-                  <IoClose
-                    className="fill-black hover:fill-slate-600 dark:fill-slate-200 ark:hover:fill-white"
-                    size={24}
-                  />
-                </Button>
-              </DrawerClose>
-              <DrawerTitle>Menu</DrawerTitle>
-              <DrawerDescription>
-                Здесь будет расположен ряд полезных ссылок или переключателей ||
-                Здесь будет расположен ряд полезных ссылок или переключателей ||
-                Здесь будет расположен ряд полезных ссылок или переключателей ||
-              </DrawerDescription>
-            </DrawerHeader>
-            <div className="p-4 pb-0">
-              <div className="mt-3 h-[120px]">
-                <h3>Subheader</h3>
-                <nav className="flex flex-col py-4 items-center">
-                  {links.map((link, index) => (
-                    <div key={index} className="py-2">
-                      <NavLink link={link} 
-                      // onClick={handleClose} 
-                      />
-                    </div>
-                  ))}
-                </nav>
-              </div>
+        <DrawerContent className="grid h-full w-lvw xs:w-4/5 mx-auto px-10 bottom-0 top-0 right-0">
+          <DrawerHeader className="grid auto-rows-min">
+            <DrawerClose className="place-self-end" asChild>
+              <Button className="px-2.5" variant="ghost">
+                <Cross1Icon />
+              </Button>
+            </DrawerClose>
+            <DrawerTitle>Menu</DrawerTitle>
+            <DrawerDescription>
+              Здесь будет расположен ряд полезных ссылок или переключателей ||
+              Здесь будет расположен ряд полезных ссылок или переключателей ||
+              Здесь будет расположен ряд полезных ссылок или переключателей ||
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 pb-0">
+            <div className="mt-3 h-[120px]">
+              <h3>Subheader</h3>
+              <nav className="flex flex-col py-4 items-center">
+                {links.map((link, index) => (
+                  <div key={index} className="py-2">
+                    <NavLink link={link} />
+                  </div>
+                ))}
+              </nav>
             </div>
-            <DrawerFooter>
-              <ModeToggle />
-            </DrawerFooter>
           </div>
+          <DrawerFooter>
+            <ModeToggle />
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     )

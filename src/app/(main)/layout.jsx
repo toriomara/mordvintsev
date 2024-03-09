@@ -1,13 +1,16 @@
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export default function Layout({ children }) {
   return (
     <>
-      <div className='flex-1'>
+      <div className="flex-1">
         <Navbar />
-        {/* <main className="max-w-screen-xl mx-auto bg-[url('/images/bg-dots.svg')] bg-fixed z-100"> */}
-        <main className='max-w-screen-xl mx-auto'>{children}</main>
+        <main className="max-w-screen-xl mx-auto">
+          {children}
+          <ScrollToTop />
+        </main>
       </div>
       <Footer />
     </>

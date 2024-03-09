@@ -4,9 +4,9 @@ import { getAllPosts } from "@/utils/fetchData";
 import { AddPost } from "@/components/AddPost";
 import { Suspense } from "react";
 import { Loader } from "@/components/ui/loader";
-
 import { cn } from "@/libs/utils";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -15,7 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
   title: "Блог | Адвокат Р.Ф. Мордвинцев",

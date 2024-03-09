@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ModeToggle } from "./ModeToggle";
-import { SearchInput } from "./SearchInput";
 import { MobileMenu } from "./MobileMenu";
 import { navLinks } from "@/constants";
+import { ModeToggle } from "./ui/mode-toggle";
+import { Logo } from "./Logo";
+import { SearchBlock } from "./SearchBlock";
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -13,34 +14,36 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 backdrop-blur bg-background/50 border-b border-custom z-10">
       <nav className="wrapper-header mx-auto flex items-center justify-between max-w-screen-xl">
-        <div className="flex items-center gap-6">
-          <Link className="text-2xl md:text-3xl font-semibold" href="/">
-            LOGO
-          </Link>
-          <SearchInput />
-          <ModeToggle />
+        <div className="flex items-center gap-10">
+          <Logo />
+          <div className="menu hidden lg:flex md:w-auto" id="navbar">
+            <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 items-center text-[14px] lg:text-[15px]">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.path}
+                  className={`${
+                    pathname === link.path
+                      ? "text-black dark:text-white"
+                      : "text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                  }`}
+                >
+                  {link.title}
+                </Link>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="mobile-menu block md:hidden">
-          <button className="flex items-center px-2 py-2">
+        <div className="flex gap-2">
+          <div className="hidden xs:flex">
+            <SearchBlock />
+          </div>
+          <div className="block lg:hidden">
             <MobileMenu links={navLinks} />
-          </button>
-        </div>
-        <div className="menu hidden md:block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 items-center">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.path}
-                className={`${
-                  pathname === link.path
-                    ? "px-4 py-2 text-white bg-secondary-600 rounded-md"
-                    : "block py-2 pl-3 pr-4 sm:text-sl rounded md:p-0 hover:text-secondary-600"
-                }`}
-              >
-                {link.title}
-              </Link>
-            ))}
-          </ul>
+          </div>
+          <div className="hidden lg:flex">
+            <ModeToggle />
+          </div>
         </div>
       </nav>
     </header>
