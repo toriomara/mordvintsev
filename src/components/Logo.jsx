@@ -7,12 +7,14 @@ import { useTheme } from "next-themes";
 export const Logo = () => {
   const { theme } = useTheme();
 
-  const darkTheme =
-    typeof window !== undefined &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // const darkTheme =
+  //   typeof window !== undefined &&
+  //   window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   const srcLogo =
-    theme === "dark" || (theme === "system" && darkTheme)
+    theme === "dark" || (theme === "system" 
+    // && darkTheme
+    )
       ? "logo-white.svg"
       : "logo.svg";
 
