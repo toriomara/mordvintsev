@@ -6,7 +6,7 @@ const basicFetch = async (endpoint) => {
 };
 
 const getAllPosts = async () => {
-  const res = await fetch('https://mordvintsev.vercel.app/posts', {
+  const res = await fetch('http://localhost:3010/api/posts', {
     cache: 'no-store',
   });
   if (!res.ok) throw new Error('Невозможно отобразить посты');
