@@ -22,7 +22,7 @@ export const Logo = () => {
   const srcLogo =
     theme === "dark" || (theme === "system" && darkTheme)
     ? "logo-white.svg"
-    : "logo.svg";
+    : "logo.svg"
     // ? LogoWhite
     // : LogoBlack
   // ? WhiteLogo
