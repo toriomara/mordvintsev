@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import {
   FaMapMarkerAlt,
@@ -12,7 +11,6 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 import { Logo } from "./Logo";
 
 export const Footer = () => {

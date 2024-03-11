@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useEffect } from "react";
 
 export const Logo = () => {
   const { theme } = useTheme();
@@ -16,10 +17,16 @@ export const Logo = () => {
       ? "logo-white.svg"
       : "logo.svg";
 
-  if (typeof window !== "undefined") {
-    console.log(window.innerWidth);
-  }
+  useEffect(() => {
+    srcLogo;
+  }, []);
 
+  // if (typeof window !== "undefined") {
+  //   console.log(window.innerWidth);
+  // }
+
+  console.log(darkTheme);
+  
   return (
     <Link className="max-w-max" href="/">
       <Image src={srcLogo} width={200} height={20} alt="Лого" />

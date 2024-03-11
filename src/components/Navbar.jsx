@@ -5,8 +5,15 @@ import { usePathname } from "next/navigation";
 import { MobileMenu } from "./MobileMenu";
 import { navLinks } from "@/constants";
 import { ModeToggle } from "./ui/mode-toggle";
-import { Logo } from "./Logo";
+// import { Logo } from "./Logo";
 import { SearchBlock } from "./SearchBlock";
+import LogoWithNoSSR2 from "./LogoWithNoSSR";
+
+// import dynamic from "next/dynamic";
+
+// const LogoWithNoSSR = dynamic(() => import("@/components/Logo"), {
+//   ssr: false,
+// });
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -15,7 +22,8 @@ export const Navbar = () => {
     <header className="sticky top-0 backdrop-blur bg-background/50 border-b border-custom z-10">
       <nav className="wrapper-header mx-auto flex items-center justify-between max-w-screen-xl">
         <div className="flex items-center gap-10">
-          <Logo />
+          {/* <Logo /> */}
+          <LogoWithNoSSR2 />
           <div className="menu hidden lg:flex md:w-auto" id="navbar">
             <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 items-center text-[14px] lg:text-[15px]">
               {navLinks.map((link, index) => (
