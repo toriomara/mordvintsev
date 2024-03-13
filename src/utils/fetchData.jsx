@@ -15,7 +15,7 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (id) => {
-  const res = await fetch(`process.env.NODE_ENV/api/posts/${id}`, {
+  const res = await fetch(`${process.env.NODE_ENV}/api/posts/${id}`, {
     next: { revalidate: 3600 },
   });
   if (!res.ok) throw new Error('Невозможно отобразить пост');
@@ -24,7 +24,7 @@ const getPostById = async (id) => {
 };
 
 const getPostBySearch = async (search) => {
-  const res = await fetch(`process.env.NODE_ENV/api/posts?q=${search}`);
+  const res = await fetch(`${process.env.NODE_ENV}/api/posts?q=${search}`);
   if (!res.ok) throw new Error('Невозможно отобразить пост');
 
   return res.json();

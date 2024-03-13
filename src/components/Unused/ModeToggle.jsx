@@ -1,8 +1,8 @@
 // Можно удалить. Весь функционал в одноимённой ф-ии в ui
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export const ModeToggle = () => {
   const [theme, setTheme] = useState(null);
@@ -29,17 +29,15 @@ export const ModeToggle = () => {
         handleModeToggle();
       }
     }
-
     document.addEventListener("keydown", toggleModeByKeys);
-
     return () => {
       document.removeEventListener("keydown", toggleModeByKeys);
     };
-  }, [theme]);
+  }, [handleModeToggle, theme]);
 
-  const handleModeToggle = () => {
+  const handleModeToggle = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
-  };
+  }, [setTheme, theme]);
 
   return (
     <div>
