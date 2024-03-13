@@ -9,7 +9,7 @@ export default function Layout({ children }) {
         <Navbar />
         <main className="max-w-screen-xl mx-auto">
           {children}
-          <ScrollToTop/>
+          <ScrollToTop />
         </main>
       </div>
       <Footer />

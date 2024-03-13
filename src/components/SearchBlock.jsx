@@ -31,8 +31,8 @@ export function SearchBlock() {
   };
 
   useEffect(() => {
-    const down = (e) => {
-      if (e.key === "п" && (e.metaKey || e.ctrlKey)) {
+    const down = (evt) => {
+      if (evt.ctrlKey && evt.keyCode === 71) {
         e.preventDefault();
         setOpen((open) => !open);
       }
@@ -90,12 +90,12 @@ export function SearchBlock() {
   return (
     <>
       <Button
-        className="px-4 gray-900"
+        className="px-4 gray-900 border border-custom shadow"
         variant="secondary"
         onClick={() => setOpen(true)}
       >
         <MagnifyingGlassIcon width={16} className="fill-gray-500 mr-2" />
-        <span className="text-gray-400">Ctrl + П</span>
+        <span className="text-gray-400">Ctrl + G</span>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <DialogHeader>

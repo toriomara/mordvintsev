@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
 import { Rubik } from "next/font/google";
-import { ScrollToTop } from "@/components/ScrollToTop";
 
 const rubik = Rubik({ subsets: ["cyrillic"] });
 
@@ -21,7 +20,6 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           {children}
-          {/* <ScrollToTop /> */}
         </ThemeProvider>
       </body>
     </html>

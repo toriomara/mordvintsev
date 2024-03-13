@@ -26,8 +26,8 @@ export const Navbar = () => {
                   href={link.path}
                   className={`${
                     pathname === link.path
-                      ? "text-black dark:text-white"
-                      : "text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                      ? "text-blue-400 dark:text-white"
+                      : "text-gray-700 dark:text-gray-400 hover:text-black dark:hover:text-white"
                   }`}
                 >
                   {link.title}

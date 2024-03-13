@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -10,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { getAllPosts } from '@/utils/fetchData';
+} from "@/components/ui/dialog";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { getAllPosts } from "@/utils/fetchData";
 
 export async function DeletePost(id) {
   const [open, setOpen] = useState(false);
@@ -23,9 +23,9 @@ export async function DeletePost(id) {
   const handleDelete = async (id) => {
     try {
       setOpen(false);
-      router.push('/blog');
+      router.push("/blog");
       await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
     } catch (error) {
       throw error;
@@ -37,18 +37,18 @@ export async function DeletePost(id) {
       <DialogTrigger asChild>
         <Button>Удалить</Button>
       </DialogTrigger>
-      <DialogContent className='sm:max-w-md'>
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Вы уверены, что хотите удалить пост?</DialogTitle>
           <DialogDescription>
             <Button
-              type='button'
-              variant='secondary'
+              type="button"
+              variant="secondary"
               onClick={() => setOpen(false)}
             >
               Нет
             </Button>
-            <Button type='submit' onClick={() => handleDelete(id)}>
+            <Button type="submit" onClick={() => handleDelete(id)}>
               Да
             </Button>
           </DialogDescription>
