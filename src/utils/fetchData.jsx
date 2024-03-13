@@ -24,7 +24,7 @@ const getPostById = async (id) => {
 };
 
 const getPostBySearch = async (search) => {
-  const res = await fetch(`${process.env.VERCEL_ENV}/api/posts?q=${search}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/posts?q=${search}`);
   if (!res.ok) throw new Error('Невозможно отобразить пост');
 
   return res.json();
