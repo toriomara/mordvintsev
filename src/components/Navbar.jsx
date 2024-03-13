@@ -11,6 +11,7 @@ import { Logo } from "./Logo";
 
 export const Navbar = () => {
   const pathname = usePathname();
+  console.log(process.env.NODE_ENV);
 
   return (
     <header className="sticky top-0 backdrop-blur bg-background/50 border-b border-custom z-10">
