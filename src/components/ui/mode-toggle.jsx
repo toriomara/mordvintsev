@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
@@ -15,6 +15,10 @@ import {
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
 
+  const handleModeToggle = useCallback(() => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }, [setTheme, theme]);
+
   useEffect(() => {
     function toggleModeByKeys(evt) {
       if (evt.shiftKey && evt.keyCode === 68) {
@@ -25,11 +29,7 @@ export function ModeToggle() {
     return () => {
       document.removeEventListener("keydown", toggleModeByKeys);
     };
-  }, [theme]);
-
-  const handleModeToggle = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
+  }, [handleModeToggle, theme]);
 
   return (
     <DropdownMenu>
