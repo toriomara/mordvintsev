@@ -6,7 +6,7 @@ const basicFetch = async (endpoint) => {
 };
 
 const getAllPosts = async () => {
-  const res = await fetch(`https://mordvintsev.vercel.app/api/posts`, {
+  const res = await fetch(`${process.env.VERCEL_URL}/api/posts`, {
     cache: 'no-store',
   });
   if (!res.ok) throw new Error('Невозможно отобразить посты');
@@ -15,7 +15,7 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (id) => {
-  const res = await fetch(`https://mordvintsev.vercel.app/api/posts/${id}`, {
+  const res = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`, {
     next: { revalidate: 3600 },
   });
   if (!res.ok) throw new Error('Невозможно отобразить пост');
@@ -24,7 +24,7 @@ const getPostById = async (id) => {
 };
 
 const getPostBySearch = async (search) => {
-  const res = await fetch(`https://mordvintsev.vercel.app/api/posts?q=${search}`);
+  const res = await fetch(`${process.env.VERCEL_URL}/api/posts?q=${search}`);
   if (!res.ok) throw new Error('Невозможно отобразить пост');
 
   return res.json();
