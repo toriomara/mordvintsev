@@ -27,8 +27,8 @@ export default async function Post({ params }) {
             <p className='leading-7 [&:not(:first-child)]:mt-6'>{post.text}</p>
             <div className=''></div>
             <div className='flex gap-4 py-4'>
-              {/* <DeletePost id={postId} />
-              <EditPost id={postId} /> */}
+              <DeletePost id={postId} />
+              <EditPost id={postId} />
             </div>
           </article>
         </Suspense>
