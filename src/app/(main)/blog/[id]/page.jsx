@@ -5,7 +5,6 @@ import { Loader } from "@/components/ui/loader";
 import { getPostById } from "@/utils/fetchData";
 import { DeletePost } from "@/components/DeletePost";
 import { EditPost } from "@/components/EditPost";
-export const dynamic = "force-dynamic";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
 export default async function Post({ params }) {

@@ -1,7 +1,6 @@
 // url: http://localhost:3010/api/posts/fdlfkgj
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
-export const dynamic = "force-dynamic";
 
 export const GET = async (request, { params }) => {
   try {
