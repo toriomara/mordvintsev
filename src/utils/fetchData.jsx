@@ -17,8 +17,8 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (id) => {
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts/${id}`, {
-  const res = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts/${id}`, {
+  // const res = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`, {
     next: { revalidate: 3600 },
   });
   if (!res.ok) throw new Error('Невозможно отобразить пост');

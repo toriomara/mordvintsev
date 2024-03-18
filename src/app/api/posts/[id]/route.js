@@ -1,63 +1,79 @@
 // url: http://localhost:3010/api/posts/fdlfkgj
-import prisma from '@/libs/prismadb';
-import { NextResponse } from 'next/server';
+import prisma from "@/libs/prismadb";
+import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
 
-export const GET = async (request, {params} ) => {
+export const GET = async (request, { params }) => {
   try {
-    const {id} = params;
+    const { id } = params;
     const post = await prisma.post.findUnique({
-      where: {id}
+      where: { id },
     });
 
     if (!post) {
       return NextResponse.json(
-        {message: 'Пост не найден', error}, 
-        {status: 404})
+        { message: "Пост не найден", error },
+        { status: 404 }
+      );
     }
 
-    return NextResponse.json(post)
-
+    return NextResponse.json(post);
   } catch (error) {
-    return NextResponse.json({message: 'Ошибка загрузки поста', error}, {status: 500})
+    return NextResponse.json(
+      { message: "Ошибка загрузки поста", error },
+      { status: 500 }
+    );
   }
-}
+};
 
-export const PATCH = async (request, {params}) => {
+export const PATCH = async (request, { params }) => {
   try {
-    const {id} = params;
+    const { id } = params;
     const body = await request.json();
-    const {title, description, image, text, author, category} = body;
+    const { title, description, image, text, author, category } = body;
 
     const updatePost = await prisma.post.update({
-      where : {
-        id
+      where: {
+        id,
       },
       data: {
-        title, description, image, text, author, category
-      }
-    })
+        title,
+        description,
+        image,
+        text,
+        author,
+        category,
+      },
+    });
 
     if (!updatePost) {
       return NextResponse.json(
-        {message: 'Пост не обновлён', error}, 
-        {status: 404})
+        { message: "Пост не обновлён", error },
+        { status: 404 }
+      );
     }
 
-    return NextResponse.json(updatePost)
+    return NextResponse.json(updatePost);
   } catch (error) {
-    return NextResponse.json({message: 'Произошла ошибка при обновлении поста', error}, {status: 500})
+    return NextResponse.json(
+      { message: "Произошла ошибка при обновлении поста", error },
+      { status: 500 }
+    );
   }
-}
+};
 
-export const DELETE = async (request, {params} ) => {
+export const DELETE = async (request, { params }) => {
   try {
-    const {id} = params;
+    const { id } = params;
     await prisma.post.delete({
-      where: {id}
+      where: { id },
     });
 
-    return NextResponse.json('Пост удалён')
+    return NextResponse.json("Пост удалён");
   } catch (error) {
-    return NextResponse.json({message: 'Ошибка удаления поста', error}, {status: 500})
+    return NextResponse.json(
+      { message: "Ошибка удаления поста", error },
+      { status: 500 }
+    );
   }
-}
+};
