@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPosts } from "@/utils/fetchData";
+import { getAllPosts } from "@/libs/fetchData";
 import { AddPost } from "@/components/AddPost";
 import { Suspense } from "react";
 import { Loader } from "@/components/ui/loader";
@@ -15,7 +15,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata = {
   title: "Блог | Адвокат Р.Ф. Мордвинцев",
@@ -23,6 +24,7 @@ export const metadata = {
 };
 
 export default async function BlogPage({ className }) {
+  noStore();
   const posts = await getAllPosts();
 
   console.log("posts =>", posts);

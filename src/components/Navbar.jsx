@@ -6,7 +6,6 @@ import { MobileMenu } from "./MobileMenu";
 import { navLinks } from "@/constants";
 import { ModeToggle } from "./ui/mode-toggle";
 import { SearchBlock } from "./SearchBlock";
-// import LogoWithNoSSR2 from "./LogoWithNoSSR";
 import { Logo } from "./Logo";
 
 export const Navbar = () => {
@@ -17,7 +16,6 @@ export const Navbar = () => {
       <nav className="wrapper-header mx-auto flex items-center justify-between max-w-screen-xl">
         <div className="flex items-center gap-10">
           <Logo />
-          {/* <LogoWithNoSSR2 /> */}
           <div className="menu hidden lg:flex md:w-auto" id="navbar">
             <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 items-center text-[14px] lg:text-[15px]">
               {navLinks.map((link, index) => (

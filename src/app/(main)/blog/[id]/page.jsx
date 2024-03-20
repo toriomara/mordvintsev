@@ -2,10 +2,11 @@ import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Loader } from "@/components/ui/loader";
-import { getPostById } from "@/utils/fetchData";
+import { getPostById } from "@/libs/fetchData";
 import { DeletePost } from "@/components/DeletePost";
 import { EditPost } from "@/components/EditPost";
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb } from "@/components/Unused/Breadcrumb";
+export const dynamic = "force-dynamic";
 
 export default async function Post({ params }) {
   const post = await getPostById(params.id);

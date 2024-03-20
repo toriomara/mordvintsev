@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import UserPosts from '@/components/UserPosts';
-import { getUser } from '@/utils/fetchData';
-import { getUserPosts } from '@/utils/fetchData';
+import { getUser } from '@/libs/fetchData';
+import { getUserPosts } from '@/libs/fetchData';
 import { Loader } from '@/components/ui/loader';
 
 export default async function UserPage({ params: { id } }) {

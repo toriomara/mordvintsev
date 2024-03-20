@@ -1,4 +1,4 @@
-// import { getBaseUrl } from "../../config";
+import { unstable_noStore as noStore } from 'next/cache';
 
 const basicFetch = async (endpoint) => {
   const res = await fetch(endpoint);
@@ -8,6 +8,7 @@ const basicFetch = async (endpoint) => {
 };
 
 const getAllPosts = async () => {
+  noStore();
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts`, {
     cache: 'no-store',
   });
@@ -17,6 +18,7 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (id) => {
+  noStore();
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts/${id}`, {
   // const res = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`, {
     next: { revalidate: 3600 },
@@ -27,6 +29,7 @@ const getPostById = async (id) => {
 };
 
 const getPostBySearch = async (search) => {
+  noStore();
   // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?q=${search}`);
   const res = await fetch(`${process.env.VERCEL_URL}/api/posts?q=${search}`);
   if (!res.ok) throw new Error('Невозможно отобразить пост');

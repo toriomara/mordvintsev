@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { getAllPosts } from "@/utils/fetchData";
+import { getAllPosts } from "@/libs/fetchData";
 
 export async function DeletePost(id) {
   const [open, setOpen] = useState(false);
