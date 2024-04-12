@@ -37,17 +37,17 @@ import { createPost } from "@/lib/actions";
 // import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-  title: z.string().min(5, {
+  title: z.string().trim().min(5, {
     message: "Заголовок должен содержать не менее 5 символов",
   }),
-  description: z.string().min(10, {
+  description: z.string().trim().min(10, {
     message: "Описание должно содержать не менее 10 символов",
   }),
   image: z.string().url().optional(),
   text: z.string().trim().min(100, {
     message: "Текст должен содержать не менее 100 символов",
   }),
-  author: z.string().min(5, {
+  author: z.string().trim().min(5, {
     message: "Поле автор должно содержать не менее 5 символов",
   }),
   category: z.string(), // Validation select a few SelectItem

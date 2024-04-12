@@ -23,10 +23,10 @@ export async function createPost(post) {
 }
 
 export async function updatePost(post, params) {
-  console.log("actions POST ===> ", post);
+  // console.log("actions POST ===> ", post);
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/posts/${params.id}`,
+      `${process.env.NEXT_PUBLIC_URL}/api/posts/66094471163176184064dc03`,
       // `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`,
       {
         method: "PATCH",
@@ -46,7 +46,7 @@ export async function updatePost(post, params) {
         },
       }
     );
-    revalidatePath(`/blog${post.id}`);
+    revalidatePath(`/blog/${params.id}`);
     const data = await res.json();
     return data;
   } catch (error) {

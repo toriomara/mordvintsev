@@ -33,31 +33,28 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { updatePost } from "@/lib/actions";
 
 const formSchema = z.object({
-  title: z.string().min(5, {
+  title: z.string().trim().min(5, {
     message: "Заголовок должен содержать не менее 2 символов",
   }),
-  description: z.string().min(10, {
+  description: z.string().trim().min(10, {
     message: "Описание должен содержать не менее 10 символов",
   }),
-  author: z.string().min(2, {
+  author: z.string().trim().min(2, {
     message: "Поле автор должно содержать не менее 10 символов",
   }),
   category: z.string(), // Validation by select a few SelectItem
   image: z.string().optional(),
-  text: z.string().min(2, {
+  text: z.string().trim().min(2, {
     message: "Текст должен содержать не менее 100 символов",
   }),
 });
 
 export function EditPost(props) {
   const [open, setOpen] = useState(false);
-  // const path = usePathname().slice(6);
   const {params} = props
-  // const path = params.id;
 
   const post = props?.post;
 
@@ -76,8 +73,8 @@ export function EditPost(props) {
   const onSubmit = (post) => {
     setOpen(false);
     updatePost(post, params);
-    console.log("Edit post Title ===>", post.title);
-    // router.refresh(`/posts/${post}`);
+    // console.log("Edit post Title ===>", post.title);
+    // router.refresh(`/posts/${params.id}`);
   };
 
   return (
