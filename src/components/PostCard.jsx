@@ -1,0 +1,64 @@
+import Link from "next/link";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+export const PostCard = ({ className, post, ...props }) => {
+  const date = post.createdAt
+    .slice(0, 10)
+    .replace(/-/g, ".")
+    .split(".")
+    .reverse()
+    .join(".");
+
+  return (
+    <Card
+      key={post.id}
+      className={cn(
+        "grid grid-rows-[1fr,1fr] md:grid-cols-[1fr,2fr] md:grid-rows-none gap-2",
+        className
+      )}
+      {...props}
+    >
+      <CardHeader className="relative">
+        <Image
+          className="object-cover rounded-t-md md:rounded-l-md md:rounded-r-none"
+          src={post.image}
+          alt={post.title}
+          fill
+        />
+      </CardHeader>
+      <CardContent className="grid gap-4 p-4">
+        <CardTitle className="text-md scroll-m-20 md:text-2xl font-semibold tracking-tight">
+          {post.title}
+        </CardTitle>
+        <CardDescription className="leading-7">
+          {post.description}
+        </CardDescription>
+        <CardFooter className="grid sm:grid sm:grid-cols-2 gap-4 p-0">
+          <span>{post.author}</span>
+          <Badge className="sm:place-self-end bg-orange-700 hover:none text-white w-fit">
+            {post.category}
+          </Badge>
+          <span>{date}</span>
+          <Link
+            className="sm:place-self-end"
+            href={`/blog/${post.id}`}
+            key={post.id}
+          >
+            <Button className="w-fit">Подробнее</Button>
+          </Link>
+        </CardFooter>
+      </CardContent>
+    </Card>
+  );
+};
