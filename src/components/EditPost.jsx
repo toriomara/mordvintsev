@@ -33,12 +33,11 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { updatePost } from "@/lib/actions";
 
 const formSchema = z.object({
-  // id: z.string(),
-  title: z.string().min(2, {
+  title: z.string().min(5, {
     message: "Заголовок должен содержать не менее 2 символов",
   }),
   description: z.string().min(10, {
@@ -52,24 +51,15 @@ const formSchema = z.object({
   text: z.string().min(2, {
     message: "Текст должен содержать не менее 100 символов",
   }),
-  // createdAt: z.string(),
-  // updatedAt: z.string(),
-});
-
-const FormSchema = formSchema.omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
 });
 
 export function EditPost(props) {
   const [open, setOpen] = useState(false);
-  // const router = useRouter();
-  const path = usePathname().slice(6);
+  // const path = usePathname().slice(6);
+  const {params} = props
+  // const path = params.id;
 
   const post = props?.post;
-  // const isCreate = !post;
-  // const post = post?.post;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -82,14 +72,13 @@ export function EditPost(props) {
       category: post?.category || "",
     },
   });
-  
+
   const onSubmit = (post) => {
     setOpen(false);
-    updatePost(post, path);
-    console.log("EditPost On Submit ===> ", post);
+    updatePost(post, params);
+    console.log("Edit post Title ===>", post.title);
     // router.refresh(`/posts/${post}`);
   };
-  console.log("Edit post Title ===>", post.title);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

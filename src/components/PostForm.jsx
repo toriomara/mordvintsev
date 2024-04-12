@@ -57,7 +57,6 @@ export function PostForm({ setOpen, ...props }) {
   const post = props?.post;
   const isCreate = !post;
   const newPost = post?.post;
-  // newPost.id = '66094471163176184064dc03';
 
   console.log("update post 1 ===>", post.id);
 
