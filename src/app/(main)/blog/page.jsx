@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPosts } from "@/libs/fetchData";
-import { AddPost } from "@/components/AddPost";
+import { getAllPosts } from "@/lib/data";
+import { CreatePost } from "@/components/CreatePost";
 import { Suspense } from "react";
 import { Loader } from "@/components/ui/loader";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -15,30 +15,29 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-export const dynamic = "force-dynamic";
-import { unstable_noStore as noStore } from "next/cache";
+import { AddPost } from "@/components/AddPost";
 
 export const metadata = {
-  title: "Блог | Адвокат Р.Ф. Мордвинцев",
+  title: "Блог",
   description: "Блог адвоката Романа Фёдоровича Мордвинцева",
 };
 
 export default async function BlogPage({ className }) {
-  noStore();
   const posts = await getAllPosts();
 
-  console.log("posts =>", posts);
+  console.log("posts =>", posts, posts.length);
 
   return (
     <div className="wrapper-main">
       <h1 className="title-section">Блог</h1>
+      {/* <CreatePost /> */}
       <AddPost />
       <Suspense fallback={<Loader />}>
         <div className="grid grid-cols lg:grid-rows-3 xl:grid-rows-4 gap-4 md:gap-y-8 md:gap-x-6 lg:flex-rows-3">
           {posts.length === 0 ? (
             <h2 className="text-center text-3xl">Постов нет</h2>
           ) : (
-            posts.map((post) => (
+            posts.reverse().map((post) => (
               <PostCard key={post.id} className={className} post={post} />
             ))
           )}

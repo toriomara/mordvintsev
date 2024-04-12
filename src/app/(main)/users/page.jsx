@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getUsers } from '@/libs/fetchData';
+import { getUsers } from '@/lib/data';
 
 export default async function UserPage() {
   const users = await getUsers();

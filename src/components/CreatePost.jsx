@@ -33,46 +33,47 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
-import { createPost } from "@/lib/actions";
+import { formSchema, createPost } from "@/lib/actions";
+import { PostForm } from "./PostForm";
 // import { useRouter } from "next/navigation";
 
-const formSchema = z.object({
-  title: z.string().min(5, {
-    message: "Заголовок должен содержать не менее 5 символов",
-  }),
-  description: z.string().min(10, {
-    message: "Описание должно содержать не менее 10 символов",
-  }),
-  image: z.string().url().optional(),
-  text: z.string().trim().min(100, {
-    message: "Текст должен содержать не менее 100 символов",
-  }),
-  author: z.string().min(5, {
-    message: "Поле автор должно содержать не менее 5 символов",
-  }),
-  category: z.string(), // Validation select a few SelectItem
-});
+// const formSchema = z.object({
+//   title: z.string().min(5, {
+//     message: "Заголовок должен содержать не менее 5 символов",
+//   }),
+//   description: z.string().min(10, {
+//     message: "Описание должно содержать не менее 10 символов",
+//   }),
+//   author: z.string().min(5, {
+//     message: "Поле автор должно содержать не менее 5 символов",
+//   }),
+//   category: z.string(), // Validation select a few SelectItem
+//   image: z.string().url().optional(),
+//   text: z.string().trim().min(100, {
+//     message: "Текст должен содержать не менее 100 символов",
+//   }),
+// });
 
-export function AddPost() {
+export function CreatePost() {
   const [open, setOpen] = useState(false);
   // const router = useRouter();
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      author: "",
-      category: "",
-      image: "",
-      text: "",
-    },
-  });
+  // const form = useForm({
+  //   resolver: zodResolver(formSchema),
+  //   defaultValues: {
+  //     title: "",
+  //     description: "",
+  //     author: "",
+  //     category: "",
+  //     image: "",
+  //     text: "",
+  //   },
+  // });
 
-  const onSubmit = (post) => {
-    setOpen(false);
-    createPost(post);
-  };
+  // const onSubmit = (post) => {
+  //   // setOpen(false);
+  //   // createPost(post);
+  // };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -86,8 +87,12 @@ export function AddPost() {
             Поля, помеченные * обязательны для заполнения
           </DialogDescription>
         </DialogHeader>
-
-        <Form {...form}>
+        <PostForm
+          setOpen={setOpen}
+          // onSubmit={onSubmit}
+          // createPost={createPost}
+        />
+        {/* <Form {...form}>
           <form
             className="flex flex-col gap-4 w-full max-w-md space-y-2"
             onSubmit={form.handleSubmit(onSubmit)}
@@ -200,7 +205,7 @@ export function AddPost() {
             />
             <Button type="submit">Добавить</Button>
           </form>
-        </Form>
+        </Form> */}
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="submit" variant="secondary">

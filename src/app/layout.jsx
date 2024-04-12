@@ -5,8 +5,12 @@ import { Rubik } from "next/font/google";
 const rubik = Rubik({ subsets: ["cyrillic"] });
 
 export const metadata = {
-  title: "Адвокат Р.Ф. Мордвинцев",
-  description: "Сайт адвоката Р.Ф. Мордвинцева",
+  title: {
+    template: "%s | Сайт Адвоката Р.Ф. Мордвинцева",
+    default: "Сайт Адвоката Р.Ф. Мордвинцева",
+  },
+  description: "The official Next.js Learn Dashboard built with App Router.",
+  metadataBase: new URL("https://mordvintsev.vercel.app"),
 };
 
 export default function RootLayout({ children }) {

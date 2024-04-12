@@ -1,5 +1,10 @@
 import { EmailSection } from '@/components/EmailSection';
 
+export const metadata = {
+  title: "Контакты",
+  description: "Контакты",
+};
+
 const ContactPage = () => {
   return (
     <div className='wrapper-main'>

@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
-export const dynamic = "force-dynamic";
 
 export default function Layout({ children }) {
   return (

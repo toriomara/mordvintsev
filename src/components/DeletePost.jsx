@@ -12,24 +12,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { getAllPosts } from "@/libs/fetchData";
+import { deletePost } from "@/lib/actions";
 
-export async function DeletePost(id) {
+export function DeletePost(id) {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
-  const posts = await getAllPosts();
 
-  const handleDelete = async (id) => {
-    try {
-      setOpen(false);
-      router.push("/blog");
-      await fetch(`/api/posts/${id}`, {
-        method: "DELETE",
-      });
-    } catch (error) {
-      throw error;
-    }
+  const deletePostWithId = deletePost.bind(null, id);
+  const deletePostWithIdandUi = () => {
+    setOpen(false);
+    deletePostWithId();
   };
 
   return (
@@ -38,9 +29,9 @@ export async function DeletePost(id) {
         <Button>Удалить</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
+        <DialogHeader className="space-y-4">
           <DialogTitle>Вы уверены, что хотите удалить пост?</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="flex justify-center space-x-4">
             <Button
               type="button"
               variant="secondary"
@@ -48,7 +39,7 @@ export async function DeletePost(id) {
             >
               Нет
             </Button>
-            <Button type="submit" onClick={() => handleDelete(id)}>
+            <Button type="submit" onClick={deletePostWithIdandUi}>
               Да
             </Button>
           </DialogDescription>

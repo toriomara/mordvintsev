@@ -1,5 +1,5 @@
 // url: http://localhost:3010/api/posts
-import prisma from "@/libs/prismadb";
+import prisma from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
@@ -29,6 +29,13 @@ export const POST = async (request) => {
         category,
       },
     });
+
+    if (!newPost) {
+      return NextResponse.json(
+        { message: "Пост не создан", error },
+        { status: 404 }
+      );
+    }
 
     return NextResponse.json(newPost);
   } catch (error) {

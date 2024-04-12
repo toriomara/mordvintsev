@@ -1,3 +1,25 @@
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mongodb"
+//   url      = env("DATABASE_URL")
+// }
+
+// model Post {
+//   id          String   @id @default(auto()) @map("_id") @db.ObjectId
+//   author      String
+//   category    String
+//   createdAt   DateTime @db.Date
+//   description String
+//   image       String
+//   text        String
+//   title       String
+//   updatedAt   DateTime @db.Date
+// }
+
+
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 

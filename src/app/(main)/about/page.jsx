@@ -1,5 +1,10 @@
 import React from 'react';
 
+export const metadata = {
+  title: "Об адвокате",
+  description: "Об адвокате Романе Фёдоровиче Мордвинцеве",
+};
+
 function AboutPage() {
   return (
     <div className='wrapper-main'>

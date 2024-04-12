@@ -33,51 +33,44 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
-import { createPost } from "@/lib/actions";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { FormSchema, updatePost } from "@/lib/actions";
+import { PostForm } from "./PostForm";
 
-const formSchema = z.object({
-  title: z.string().min(5, {
-    message: "Заголовок должен содержать не менее 5 символов",
-  }),
-  description: z.string().min(10, {
-    message: "Описание должно содержать не менее 10 символов",
-  }),
-  image: z.string().url().optional(),
-  text: z.string().trim().min(100, {
-    message: "Текст должен содержать не менее 100 символов",
-  }),
-  author: z.string().min(5, {
-    message: "Поле автор должно содержать не менее 5 символов",
-  }),
-  category: z.string(), // Validation select a few SelectItem
-});
+// const formSchema = z.object({
+//   title: z.string().min(2, {
+//     message: 'Заголовок должен содержать не менее 2 символов',
+//   }),
+//   description: z.string().min(10, {
+//     message: 'Описание должен содержать не менее 10 символов',
+//   }),
+//   author: z.string().min(2, {
+//     message: 'Поле автор должно содержать не менее 10 символов',
+//   }),
+//   category: z.string(), // Validation by select a few SelectItem
+//   image: z.string().optional(),
+//   text: z.string().min(2, {
+//     message: 'Текст должен содержать не менее 100 символов',
+//   }),
+// });
 
-export function AddPost() {
+export function UpdatePost(post) {
   const [open, setOpen] = useState(false);
   // const router = useRouter();
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      author: "",
-      category: "",
-      image: "",
-      text: "",
-    },
-  });
+  // console.log(id);
 
-  const onSubmit = (post) => {
-    setOpen(false);
-    createPost(post);
-  };
+  // const onSubmit = (post) => {
+  //   // setOpen(false);
+  //   // updatePost(post);
+  //   router.refresh();
+  //   // router.refresh(`/posts/${post}`);
+  // };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="mb-6">Добавить</Button>
+        <Button>Редактировать</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -86,22 +79,28 @@ export function AddPost() {
             Поля, помеченные * обязательны для заполнения
           </DialogDescription>
         </DialogHeader>
-
-        <Form {...form}>
+        <PostForm
+          setOpen={setOpen}
+          post={post}
+          // onSubmit={onSubmit}
+        />
+        {/* <Form {...form}>
           <form
+            onSubmit={form.handleSubmit(handleSubmit)}
             className="flex flex-col gap-4 w-full max-w-md space-y-2"
-            onSubmit={form.handleSubmit(onSubmit)}
           >
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Заголовок *</FormLabel>
+                  <FormLabel>Заголовок</FormLabel>
                   <FormControl>
                     <Input placeholder="Название поста" {...field} />
                   </FormControl>
-                  <FormDescription>Добавьте заголовок</FormDescription>
+                  <FormDescription>
+                    This is your public display name
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -111,7 +110,7 @@ export function AddPost() {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Описание *</FormLabel>
+                  <FormLabel>Описание</FormLabel>
                   <FormControl>
                     <Input placeholder="Описание поста" {...field} />
                   </FormControl>
@@ -125,7 +124,7 @@ export function AddPost() {
               name="author"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Автор *</FormLabel>
+                  <FormLabel>Автор</FormLabel>
                   <FormControl>
                     <Input placeholder="Автор поста" {...field} />
                   </FormControl>
@@ -139,7 +138,7 @@ export function AddPost() {
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Категория *</FormLabel>
+                  <FormLabel>Категория</FormLabel>
                   <Select onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger>
@@ -157,7 +156,9 @@ export function AddPost() {
                         Семейный адвокат
                       </SelectItem>
                     </SelectContent>
-                    <FormDescription>Выберите категорию</FormDescription>
+                    <FormDescription>
+                      This is your public display name
+                    </FormDescription>
                   </Select>
                   <FormMessage />
                 </FormItem>
@@ -178,7 +179,7 @@ export function AddPost() {
                     />
                   </FormControl>
                   <FormDescription>
-                    Добавьте ссылку на изображение
+                    This is your public display name
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -189,7 +190,7 @@ export function AddPost() {
               name="text"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Текст *</FormLabel>
+                  <FormLabel>Текст</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Текст поста" {...field} />
                   </FormControl>
@@ -198,12 +199,12 @@ export function AddPost() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Добавить</Button>
+            <Button type="submit">Сохранить</Button>
           </form>
-        </Form>
+        </Form> */}
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="submit" variant="secondary">
+            <Button type="button" variant="secondary">
               Закрыть
             </Button>
           </DialogClose>

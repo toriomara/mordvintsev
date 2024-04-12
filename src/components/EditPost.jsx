@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogClose,
@@ -15,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -24,75 +23,80 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from './ui/textarea';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+} from "@/components/ui/select";
+import { Textarea } from "./ui/textarea";
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { updatePost } from "@/lib/actions";
 
 const formSchema = z.object({
+  // id: z.string(),
   title: z.string().min(2, {
-    message: 'Заголовок должен содержать не менее 2 символов',
+    message: "Заголовок должен содержать не менее 2 символов",
   }),
   description: z.string().min(10, {
-    message: 'Описание должен содержать не менее 10 символов',
+    message: "Описание должен содержать не менее 10 символов",
   }),
   author: z.string().min(2, {
-    message: 'Поле автор должно содержать не менее 10 символов',
+    message: "Поле автор должно содержать не менее 10 символов",
   }),
   category: z.string(), // Validation by select a few SelectItem
   image: z.string().optional(),
   text: z.string().min(2, {
-    message: 'Текст должен содержать не менее 100 символов',
+    message: "Текст должен содержать не менее 100 символов",
   }),
+  // createdAt: z.string(),
+  // updatedAt: z.string(),
 });
 
-export function EditPost() {
+const FormSchema = formSchema.omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export function EditPost(props) {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
+  const path = usePathname().slice(6);
+
+  const post = props?.post;
+  // const isCreate = !post;
+  // const post = post?.post;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      author: '',
-      category: '',
-      image: '',
-      text: '',
+      title: post?.title || "",
+      description: post?.description || "",
+      image: post?.image || "",
+      text: post?.text || "",
+      author: post?.author || "",
+      category: post?.category || "",
     },
   });
-
-  const handleSubmit = async (post) => {
-    try {
-      setOpen(false);
-      const res = await fetch(`/api/posts/${post.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify(post),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await res.json();
-      router.refresh();
-      return data;
-    } catch (error) {
-      throw error;
-    }
+  
+  const onSubmit = (post) => {
+    setOpen(false);
+    updatePost(post, path);
+    console.log("EditPost On Submit ===> ", post);
+    // router.refresh(`/posts/${post}`);
   };
+  console.log("Edit post Title ===>", post.title);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>Редактировать</Button>
       </DialogTrigger>
-      <DialogContent className='sm:max-w-md'>
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Добавить пост</DialogTitle>
           <DialogDescription>
@@ -101,17 +105,17 @@ export function EditPost() {
         </DialogHeader>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(handleSubmit)}
-            className='flex flex-col gap-4 w-full max-w-md space-y-2'
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 w-full max-w-md space-y-2"
           >
             <FormField
               control={form.control}
-              name='title'
+              name="title"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Заголовок</FormLabel>
                   <FormControl>
-                    <Input placeholder='Название поста' {...field} />
+                    <Input placeholder="Название поста" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is your public display name
@@ -122,12 +126,12 @@ export function EditPost() {
             />
             <FormField
               control={form.control}
-              name='description'
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Описание</FormLabel>
                   <FormControl>
-                    <Input placeholder='Описание поста' {...field} />
+                    <Input placeholder="Описание поста" {...field} />
                   </FormControl>
                   <FormDescription>Краткое содержание поста</FormDescription>
                   <FormMessage />
@@ -136,12 +140,12 @@ export function EditPost() {
             />
             <FormField
               control={form.control}
-              name='author'
+              name="author"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Автор</FormLabel>
                   <FormControl>
-                    <Input placeholder='Автор поста' {...field} />
+                    <Input placeholder="Автор поста" {...field} />
                   </FormControl>
                   <FormDescription>Добавьте своё имя</FormDescription>
                   <FormMessage />
@@ -150,24 +154,24 @@ export function EditPost() {
             />
             <FormField
               control={form.control}
-              name='category'
+              name="category"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Категория</FormLabel>
                   <Select onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder='Выберите категорию' />
+                        <SelectValue placeholder="Выберите категорию" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value='административное право'>
+                      <SelectItem value="административное право">
                         Административное право
                       </SelectItem>
-                      <SelectItem value='уголовные дела'>
+                      <SelectItem value="уголовные дела">
                         Уголовные дела
                       </SelectItem>
-                      <SelectItem value='семейный адвокат'>
+                      <SelectItem value="семейный адвокат">
                         Семейный адвокат
                       </SelectItem>
                     </SelectContent>
@@ -181,15 +185,15 @@ export function EditPost() {
             />
             <FormField
               control={form.control}
-              name='image'
+              name="image"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Изображение</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder='Добавьте изображение'
+                      placeholder="Добавьте изображение"
                       // type='file'
-                      type='text'
+                      type="text"
                       {...field}
                     />
                   </FormControl>
@@ -202,24 +206,24 @@ export function EditPost() {
             />
             <FormField
               control={form.control}
-              name='text'
+              name="text"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Текст</FormLabel>
                   <FormControl>
-                    <Textarea placeholder='Текст поста' {...field} />
+                    <Textarea placeholder="Текст поста" {...field} />
                   </FormControl>
                   <FormDescription>Добавьте текст поста</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type='submit'>Сохранить</Button>
+            <Button type="submit">Сохранить</Button>
           </form>
         </Form>
-        <DialogFooter className='sm:justify-start'>
+        <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type='button' variant='secondary'>
+            <Button type="button" variant="secondary">
               Закрыть
             </Button>
           </DialogClose>

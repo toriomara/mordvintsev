@@ -1,5 +1,5 @@
 // url: http://localhost:3010/api/posts/fdlfkgj
-import prisma from "@/libs/prismadb";
+import prisma from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
@@ -32,9 +32,7 @@ export const PATCH = async (request, { params }) => {
     const { title, description, image, text, author, category } = body;
 
     const updatePost = await prisma.post.update({
-      where: {
-        id,
-      },
+      where: { id },
       data: {
         title,
         description,
