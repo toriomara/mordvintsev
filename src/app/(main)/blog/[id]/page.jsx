@@ -32,3 +32,5 @@ export default async function Post({ params }) {
     </div>
   );
 }
+
+// notFound? if post undefined

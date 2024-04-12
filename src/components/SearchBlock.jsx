@@ -33,7 +33,7 @@ export function SearchBlock() {
   useEffect(() => {
     const down = (evt) => {
       if (evt.ctrlKey && evt.keyCode === 71) {
-        e.preventDefault();
+        evt.preventDefault();
         setOpen((open) => !open);
       }
     };

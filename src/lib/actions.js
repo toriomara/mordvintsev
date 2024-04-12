@@ -12,8 +12,8 @@ export async function createPost(post) {
         "Content-Type": "application/json",
       },
     });
-    revalidatePath("/blog");
     const data = await res.json();
+    revalidatePath("/blog");
     return data;
   } catch (error) {
     return {

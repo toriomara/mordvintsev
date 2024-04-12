@@ -28,6 +28,10 @@ const getPostById = async (id) => {
       cache: "no-store",
       // next: { revalidate: 3600 },
     });
+
+    if (!res) {
+      return NotFound;
+    }
     return res.json();
   } catch (error) {
     throw new Error("Невозможно отобразить пост");
@@ -37,31 +41,10 @@ const getPostById = async (id) => {
 const getPostBySearch = async (search) => {
   noStore();
   // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?q=${search}`);
-  const res = await fetch(`${process.env.VERCEL_URL}/api/posts?q=${search}`);
-  if (!res.ok) throw new Error("Невозможно отобразить пост");
-
-  return res.json();
-};
-
-const getUser = async (id) => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-  if (!res.ok) throw new Error("Невозможно отобразить пользователей");
-  return res.json();
-};
-
-const getUserPosts = async (id) => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
   const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?userId=${id}`
+    `${process.env.NEXT_PUBLIC_URL}/api/posts?q=${search}`
   );
-  if (!res.ok) throw new Error("Невозможно отобразить посты");
-
-  return res.json();
-};
-
-const getUsers = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  if (!res.ok) throw new Error("Невозможно отобразить пользователей");
+  if (!res.ok) throw new Error("Невозможно отобразить пост");
 
   return res.json();
 };
@@ -69,11 +52,6 @@ const getUsers = async () => {
 export {
   basicFetch,
   getAllPosts,
-  getUser,
-  getUserPosts,
-  getUsers,
   getPostById,
   getPostBySearch,
 };
-
-// https://jsonplaceholder.typicode.com/posts
