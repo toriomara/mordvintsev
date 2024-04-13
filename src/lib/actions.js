@@ -23,10 +23,11 @@ export async function createPost(post) {
 }
 
 export async function updatePost(post, params) {
-  // console.log("actions POST ===> ", post);
+  post.id = params.id
+  console.log("actions POST ===> ", post);
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/posts/66094471163176184064dc03`,
+      `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`,
       // `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`,
       {
         method: "PATCH",
