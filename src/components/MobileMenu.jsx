@@ -14,6 +14,10 @@ import {
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ModeToggle } from "./ui/mode-toggle";
+import { SearchBlock } from "./SearchBlock";
+import { SocialIcons } from "./SocialIcons";
+import { PhoneBlock } from "./PhoneBlock";
+import { FaBars, FaCat } from "react-icons/fa";
 
 export function MobileMenu({ links }) {
   const isDesktop = useMediaQuery("(max-width: 1024px)");
@@ -23,27 +27,29 @@ export function MobileMenu({ links }) {
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <Button variant="ghost" size="icon">
-            <HamburgerMenuIcon />
+            {/* <HamburgerMenuIcon size={20} /> */}
+            <FaBars size={20} />
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="grid h-full w-lvw xs:w-4/5 mx-auto px-10 bottom-0 top-0 right-0">
-          <DrawerHeader className="grid auto-rows-min">
-            <DrawerClose className="place-self-end" asChild>
-              <Button className="px-2.5" variant="ghost">
-                <Cross1Icon />
+        <DrawerContent className="grid h-full w-lvw w-full xs:w-4/5 mx-auto xs:px-8 bottom-0 top-0 right-0">
+          <DrawerHeader className="flex auto-rows-min justify-between">
+            <ModeToggle />
+            <DrawerClose className="" asChild>
+              <Button className="px-2.5" variant="ghost" size="icon">
+                {/* <Cross1Icon size={20} /> */}
+                <FaCat size={20} />
               </Button>
             </DrawerClose>
-            <DrawerTitle>Menu</DrawerTitle>
-            <DrawerDescription>
-              Здесь будет расположен ряд полезных ссылок или переключателей ||
-              Здесь будет расположен ряд полезных ссылок или переключателей ||
-              Здесь будет расположен ряд полезных ссылок или переключателей ||
-            </DrawerDescription>
           </DrawerHeader>
-          <div className="p-4 pb-0">
+          <div className="grid gap-3 content-start justify-center p-4">
+            <DrawerTitle className="text-center">Поиск</DrawerTitle>
+            <SearchBlock />
+          </div>
+          {/* <DrawerDescription className="flex auto-rows-min justify-between">
+          </DrawerDescription> */}
+          <div className="p-4">
             <div className="mt-3 h-[120px]">
-              <h3>Subheader</h3>
-              <nav className="flex flex-col py-4 items-center">
+              <nav className="flex flex-col items-center">
                 {links.map((link, index) => (
                   <div key={index} className="py-2">
                     <NavLink link={link} />
@@ -52,8 +58,9 @@ export function MobileMenu({ links }) {
               </nav>
             </div>
           </div>
-          <DrawerFooter>
-            <ModeToggle />
+          <DrawerFooter className="flex-row justify-between">
+            <SocialIcons />
+            <PhoneBlock />
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

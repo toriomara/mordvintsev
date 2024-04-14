@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { Logo } from "./Logo";
+import { SocialIcons } from "./SocialIcons";
 
 export const Footer = () => {
   return (
@@ -38,7 +39,9 @@ export const Footer = () => {
           <div className="grid lg:col-span-2 gap-3 md:col-span-1">
             <h4 className="font-semibold text-xl">Информация</h4>
             <div className="grid gap-1 xs:gap-3">
-              <Link className="max-w-max" href="/">Главная</Link>
+              <Link className="max-w-max" href="/">
+                Главная
+              </Link>
               <Link href="/services">Услуги</Link>
               <Link href="/about">Об адвокате</Link>
               <Link href="/blog">Блог</Link>
@@ -88,45 +91,12 @@ export const Footer = () => {
             <Button variant="outline">Отправить</Button>
           </div>
         </div>
-        <div className="max-w-screen-xl mx-auto sm:flex sm:items-center sm:justify-between pt-6">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        <div className="grid gap-3 sm:flex sm:justify-between pt-6">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             © {new Date().getFullYear()} Адвокат Р.Ф. Мордвинцев. Все права
             защищены
           </span>
-          <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-            <Link
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              passHref={true}
-            >
-              <FaTelegramPlane size={24} />
-              <span className="sr-only">Telegram page</span>
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              passHref={true}
-            >
-              <FaWhatsapp size={24} />
-              <span className="sr-only">Whatsapp page</span>
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              passHref={true}
-            >
-              <FaVk size={24} />
-              <span className="sr-only">Vkontakte page</span>
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              passHref={true}
-            >
-              <FaOdnoklassniki size={24} />
-              <span className="sr-only">Odnoklassniki page</span>
-            </Link>
-          </div>
+          <SocialIcons />
         </div>
       </div>
     </footer>

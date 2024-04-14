@@ -40,7 +40,6 @@ const getPostById = async (id) => {
 
 const getPostBySearch = async (search) => {
   noStore();
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/posts?q=${search}`);
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/posts?q=${search}`
   );
@@ -49,9 +48,4 @@ const getPostBySearch = async (search) => {
   return res.json();
 };
 
-export {
-  basicFetch,
-  getAllPosts,
-  getPostById,
-  getPostBySearch,
-};
+export { basicFetch, getAllPosts, getPostById, getPostBySearch };

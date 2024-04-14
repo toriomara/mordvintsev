@@ -23,25 +23,13 @@ export async function createPost(post) {
 }
 
 export async function updatePost(post, params) {
-  post.id = params.id
-  console.log("actions POST ===> ", post);
+  post.id = params.id;
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`,
-      // `${process.env.NEXT_PUBLIC_URL}/api/posts/${post.id}`,
       {
         method: "PATCH",
-        body: JSON.stringify(
-          post
-          // {
-          // title: post.title,
-          // description: post.description,
-          // image: post.image,
-          // text: post.text,
-          // author: post.author,
-          // category: post.category,
-          // }
-        ),
+        body: JSON.stringify(post),
         headers: {
           "Content-Type": "application/json",
         },
