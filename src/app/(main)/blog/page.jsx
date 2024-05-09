@@ -12,7 +12,6 @@ export default function BlogPage() {
   return (
     <div className="wrapper-main">
       <h1 className="title-section">Блог</h1>
-      {/* <CreatePost /> */}
       <AddPost />
       <Suspense fallback={<Loader />}>
         <PostList />

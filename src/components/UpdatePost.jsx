@@ -34,7 +34,7 @@ import {
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FormSchema, updatePost } from "@/lib/actions";
+import { FormSchema, updatePost } from "@/libs/actions";
 import { PostForm } from "./PostForm";
 
 // const formSchema = z.object({

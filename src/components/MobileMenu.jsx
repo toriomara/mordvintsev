@@ -18,6 +18,7 @@ import { SearchBlock } from "./SearchBlock";
 import { SocialIcons } from "./SocialIcons";
 import { PhoneBlock } from "./PhoneBlock";
 import { FaBars, FaCat } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
 export function MobileMenu({ links }) {
   const isDesktop = useMediaQuery("(max-width: 1024px)");
@@ -32,12 +33,12 @@ export function MobileMenu({ links }) {
           </Button>
         </DrawerTrigger>
         <DrawerContent className="grid h-full w-lvw w-full xs:w-4/5 mx-auto xs:px-8 bottom-0 top-0 right-0">
-          <DrawerHeader className="flex auto-rows-min justify-between">
+          <DrawerHeader className="flex justify-between">
             <ModeToggle />
-            <DrawerClose className="" asChild>
-              <Button className="px-2.5" variant="ghost" size="icon">
+            <DrawerClose asChild>
+              <Button variant="ghost" size="icon">
                 {/* <Cross1Icon size={20} /> */}
-                <FaCat size={20} />
+                <IoClose size={24} />
               </Button>
             </DrawerClose>
           </DrawerHeader>

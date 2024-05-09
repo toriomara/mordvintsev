@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
-import { createPost, updatePost } from "@/lib/actions";
+import { createPost, updatePost } from "@/libs/actions";
 
 const formSchema = z.object({
   // id: z.string(),

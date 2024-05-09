@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -24,7 +24,7 @@ export const PostCard = ({ className, post, ...props }) => {
     <Card
       key={post.id}
       className={cn(
-        "grid grid-rows-[1fr,1fr] md:grid-cols-[1fr,2fr] md:grid-rows-none gap-2",
+        "grid grid-rows-[1fr,2fr] sm:grid-rows-[1fr,1fr] md:grid-cols-[1fr,2fr] md:grid-rows-none gap-2",
         className
       )}
       {...props}
@@ -34,7 +34,9 @@ export const PostCard = ({ className, post, ...props }) => {
           className="object-cover rounded-t-md md:rounded-l-md md:rounded-r-none"
           src={post.image}
           alt={post.title}
+          priority
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </CardHeader>
       <CardContent className="grid gap-4 p-4">

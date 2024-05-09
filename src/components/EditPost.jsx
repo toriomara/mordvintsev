@@ -33,7 +33,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
-import { updatePost } from "@/lib/actions";
+import { updatePost } from "@/libs/actions";
 
 const formSchema = z.object({
   title: z.string().trim().min(5, {
@@ -73,8 +73,6 @@ export function EditPost(props) {
   const onSubmit = (post) => {
     setOpen(false);
     updatePost(post, params);
-    // console.log("Edit post Title ===>", post.title);
-    // router.refresh(`/posts/${params.id}`);
   };
 
   return (

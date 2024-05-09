@@ -32,9 +32,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
-import { useState } from "react";
-import { createPost } from "@/lib/actions";
-// import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { createPost } from "@/libs/actions";
+import { useToast } from "@/components/ui/use-toast";
+import Tiptap from "./Tiptap";
 
 const formSchema = z.object({
   title: z.string().trim().min(5, {
@@ -55,9 +56,10 @@ const formSchema = z.object({
 
 export function AddPost() {
   const [open, setOpen] = useState(false);
-  // const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm({
+    mode: "onChange",
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
@@ -69,9 +71,22 @@ export function AddPost() {
     },
   });
 
+  console.log(form);
+
+  const { formState } = form;
+  const { isDirty, isValid, error } = formState;
+
   const onSubmit = (post) => {
     setOpen(false);
     createPost(post);
+    form.reset();
+  };
+
+  const myToast = () => {
+    toast({
+      title: "Пост добавлен",
+      description: "Friday, February 10, 2023 at 5:57 PM",
+    });
   };
 
   return (
@@ -102,7 +117,7 @@ export function AddPost() {
                     <Input placeholder="Название поста" {...field} />
                   </FormControl>
                   <FormDescription>Добавьте заголовок</FormDescription>
-                  <FormMessage />
+                  <FormMessage error={error} />
                 </FormItem>
               )}
             />
@@ -191,17 +206,25 @@ export function AddPost() {
                 <FormItem>
                   <FormLabel>Текст *</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Текст поста" {...field} />
+                    {/* <Textarea placeholder="Текст поста" {...field} /> */}
+                    <Tiptap description={field.name} onChange={field.onChange} placeholder="Текст поста" />
                   </FormControl>
                   <FormDescription>Добавьте текст поста</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Добавить</Button>
+            <Button
+              className="sm:place-self-end sm:w-fit"
+              type="submit"
+              disabled={!isValid || !isDirty}
+              // onClick={myToast}
+            >
+              Добавить
+            </Button>
           </form>
         </Form>
-        <DialogFooter className="sm:justify-start">
+        <DialogFooter className="sm:justify-end">
           <DialogClose asChild>
             <Button type="submit" variant="secondary">
               Закрыть

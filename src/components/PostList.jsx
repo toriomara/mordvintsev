@@ -1,9 +1,9 @@
-import { getAllPosts } from "@/lib/data";
+import { getAllPosts } from "@/libs/data";
 import { PostCard } from "./PostCard";
+import { Tost } from "./Tost";
 
 export async function PostList({ className }) {
   const posts = await getAllPosts();
-
   console.log("posts =>", posts, posts.length);
 
   return (

@@ -1,6 +1,7 @@
 "use client";
+// unused component
 
-import { Children, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { CommandDialog } from "@/components/ui/command";
 import { Button } from "./ui/button";
 import {
@@ -13,8 +14,8 @@ import { Input } from "@/components/ui/input";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { IoClose } from "react-icons/io5";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import SearchPage from "@/app/(main)/search/page";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+// import SearchPage from "@/app/(main)/search/page";
 import { SearchedPosts } from "./SearchedPosts";
 import { ScrollArea } from "./ui/scroll-area";
 
@@ -32,29 +33,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Search from "./Search";
+import { Loader } from "./ui/loader";
+import { Table } from "./ui/table";
+import SearchPage from "@/app/(main)/search/page";
 
-export function SearchBlock({ children }) {
-  // export function SearchBlock({ searchParams }) {
-  // console.log(searchParams);
-  // const router = useRouter();
+export function SearchBlock2({ searchParams }) {
   const [open, setOpen] = useState(false);
-  // const search = useSearchParams();
-  // const [searchQuery, setSearchQuery] = useState(search ? search.get("q") : "");
 
-  // const query = searchParams?.query || "";
-
-  // const handleChange = (e) => {
-  //   setSearchQuery(e.target.value);
-  // };
-
-  const onSearch = (e) => {
-    // e.preventDefault();
-    if (typeof searchQuery !== "string") {
-      return;
-    }
-    const encodedSearchQuery = encodeURI(searchQuery);
-    router.push(`/search?q=${encodedSearchQuery}`);
-  };
+  const query = searchParams?.query || "";
 
   useEffect(() => {
     const down = (e) => {
@@ -80,15 +66,12 @@ export function SearchBlock({ children }) {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <DialogHeader>
-          <DialogTitle className="flex justify-center mb-6">Поиск</DialogTitle>
-          <Search placeholder="SearcH" />
-        </DialogHeader>
-        <ScrollArea className="min-h-min max-h-96 w-full rounded-md ">
-          <div className="grid gap-4 py-4">
+          <DialogTitle className="flex justify-center">Поиск</DialogTitle>
+          <Search placeholder="Search" />
+          <Suspense key={query} fallback={<Loader />}>
             {/* <SearchedPosts query={query} /> */}
-            {children}
-          </div>
-        </ScrollArea>
+          </Suspense>
+        </DialogHeader>
       </CommandDialog>
     </>
   );

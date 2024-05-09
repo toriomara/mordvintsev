@@ -1,5 +1,5 @@
-// url: http://localhost:3010/api/posts/fdlfkgj
-import prisma from "@/lib/prismadb";
+// url: http://localhost:3010/api/posts/post1
+import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {

@@ -4,7 +4,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 const basicFetch = async (endpoint) => {
   const res = await fetch(endpoint);
-  if (!res) throw new Error("Невозможно загрузить данные");
+  if (!res.ok) throw new Error("Невозможно загрузить данные");
 
   return res.json();
 };
@@ -47,5 +47,13 @@ const getPostBySearch = async (search) => {
 
   return res.json();
 };
+
+// const fetchPosts = async (url) => {
+//   const res = await fetch(url);
+//   if (!res.ok) {
+//     throw new Error("Не удалось загрузить посты");
+//   }
+//   return res.json();
+// };
 
 export { basicFetch, getAllPosts, getPostById, getPostBySearch };

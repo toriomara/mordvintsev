@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import { Loader } from "@/components/ui/loader";
-import { getPostById } from "@/lib/data";
+import { getPostById } from "@/libs/data";
 import { DeletePost } from "@/components/DeletePost";
-import { UpdatePost } from "@/components/UpdatePost";
 import { EditPost } from "@/components/EditPost";
+// import { UpdatePost } from "@/components/UpdatePost";
 
 export default async function Post({ params }) {
   const post = await getPostById(params.id);

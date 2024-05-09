@@ -12,15 +12,24 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import { deletePost } from "@/lib/actions";
+import { deletePost } from "@/libs/actions";
+import { useToast } from "@/components/ui/use-toast";
 
 export function DeletePost(id) {
   const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+
+  const deleteToast = () => {
+    toast({
+      title: "Пост удалён",
+    });
+  };
 
   const deletePostWithId = deletePost.bind(null, id);
   const deletePostWithIdandUi = () => {
     setOpen(false);
     deletePostWithId();
+    deleteToast();
   };
 
   return (
