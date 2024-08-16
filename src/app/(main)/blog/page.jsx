@@ -2,6 +2,9 @@ import { Suspense } from "react";
 import { Loader } from "@/components/ui/loader";
 import { AddPost } from "@/components/AddPost";
 import { PostList } from "@/components/PostList";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Sidebar } from "@/components/Sidebar";
 
 export const metadata = {
   title: "Блог",
@@ -10,12 +13,22 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="wrapper-main">
-      <h1 className="title-section">Блог</h1>
-      <AddPost />
-      <Suspense fallback={<Loader />}>
-        <PostList />
-      </Suspense>
+    <div className="wrapper-main flex gap-6 w-full">
+      <div className="w-full">
+        <h1 className="title-section">Блог</h1>
+        <div className="space-x-6 mb-6">
+          <AddPost />
+          <Link href="/addpost">
+            <Button>Добавить пост</Button>
+          </Link>
+        </div>
+        <Suspense fallback={<Loader />}>
+          <PostList />
+        </Suspense>
+      </div>
+      <div className="hidden lg:flex">
+        <Sidebar />
+      </div>
     </div>
   );
 }

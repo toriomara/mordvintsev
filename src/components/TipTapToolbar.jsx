@@ -1,29 +1,76 @@
 "use client";
 
 import {
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
   Bold,
-  Strikethrough,
   Italic,
+  Strikethrough,
   List,
   ListOrdered,
-  Heading2,
+  Undo2,
+  Redo2,
+  Rows3,
+  Underline,
+  MessageSquareCode,
+  Eraser,
+  Link,
 } from "lucide-react";
 import { Toggle } from "./ui/toggle";
+import { useCallback } from "react";
 
-const TipTapToolbar = ({ editor }) => {
+const TipTapToolbar = ({ editor, content }) => {
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes("link").href;
+    const url = window.prompt("URL", previousUrl);
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+      return;
+    }
+
+    // update link
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+  }, [editor]);
+
   if (!editor) {
     return null;
   }
   return (
-    <div className="border border-input bg-transparent ">
+    <div className="p-1 border border-b-0 rounded-t-md bg-transparent">
       <Toggle
         size="sm"
-        pressed={editor.isActive("heading")}
+        pressed={editor.isActive("heading", { level: 2 })}
         onPressedChange={() =>
           editor.chain().focus().toggleHeading({ level: 2 }).run()
         }
       >
         <Heading2 className="h-4 w-4" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive("heading", { level: 3 })}
+        onPressedChange={() =>
+          editor.chain().focus().toggleHeading({ level: 3 }).run()
+        }
+      >
+        <Heading3 className="h-4 w-4" />
+      </Toggle>
+      <Toggle
+        onClick={() => editor.chain().focus().setParagraph().run()}
+        className={editor.isActive("paragraph") ? "is-active" : ""}
+      >
+        <Rows3 className="h-4 w-4" />
       </Toggle>
       <Toggle
         size="sm"
@@ -38,6 +85,13 @@ const TipTapToolbar = ({ editor }) => {
         onPressedChange={() => editor.chain().focus().toggleItalic().run()}
       >
         <Italic className="h-4 w-4" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive("underline")}
+        onPressedChange={() => editor.chain().focus().toggleUnderline().run()}
+      >
+        <Underline className="h-4 w-4" />
       </Toggle>
       <Toggle
         size="sm"
@@ -60,6 +114,28 @@ const TipTapToolbar = ({ editor }) => {
       >
         <ListOrdered className="h-4 w-4" />
       </Toggle>
+      <Toggle
+        pressed={editor.isActive("blockquote")}
+        onPressedChange={() => editor.chain().focus().toggleBlockquote().run()}
+      >
+        <MessageSquareCode className="h-4 w-4" />
+      </Toggle>
+      <Toggle onPressedChange={() => editor.chain().focus().clearNodes().run()}>
+        <Eraser className="h-4 w-4" />
+      </Toggle>
+      <Toggle
+        onClick={setLink}
+        className={editor.isActive("link") ? "is-active" : ""}
+      >
+        <Link className="h-4 w-4" />
+      </Toggle>
+      <Toggle onClick={() => editor.chain().focus().undo().run()}>
+        <Undo2 className="h-4 w-4" />
+      </Toggle>
+      <Toggle onClick={() => editor.chain().focus().redo().run()}>
+        <Redo2 className="h-4 w-4" />
+      </Toggle>
+      {content}
     </div>
   );
 };

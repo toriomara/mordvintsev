@@ -1,7 +1,9 @@
 "use client";
+// Remove later (when added post by page)
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,7 +34,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "./ui/textarea";
-import { useEffect, useState } from "react";
 import { createPost } from "@/libs/actions";
 import { useToast } from "@/components/ui/use-toast";
 import Tiptap from "./Tiptap";
@@ -92,7 +93,7 @@ export function AddPost() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="mb-6">Добавить</Button>
+        <Button>Добавить</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -187,7 +188,6 @@ export function AddPost() {
                   <FormControl>
                     <Input
                       placeholder="Добавьте изображение"
-                      // type='file'
                       type="text"
                       {...field}
                     />
@@ -205,10 +205,15 @@ export function AddPost() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Текст *</FormLabel>
-                  <FormControl>
-                    {/* <Textarea placeholder="Текст поста" {...field} /> */}
-                    <Tiptap description={field.name} onChange={field.onChange} placeholder="Текст поста" />
-                  </FormControl>
+                  {/* <FormControl> */}
+                  {/* <Textarea placeholder="Текст поста" {...field} /> */}
+                  <Tiptap
+                    {...field}
+                    // description={field.name}
+                    // onChange={field.onChange}
+                    placeholder="Текст поста"
+                  />
+                  {/* </FormControl> */}
                   <FormDescription>Добавьте текст поста</FormDescription>
                   <FormMessage />
                 </FormItem>

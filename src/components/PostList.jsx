@@ -3,7 +3,7 @@ import { PostCard } from "./PostCard";
 
 export async function PostList({ className }) {
   const posts = await getAllPosts();
-  console.log("posts =>", posts, posts.length);
+  // console.log("posts =>", posts, posts.length);
 
   return (
     <div className="grid grid-cols lg:grid-rows-3 xl:grid-rows-4 gap-4 md:gap-y-8 md:gap-x-6 lg:flex-rows-3">

@@ -5,7 +5,6 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebounce } from "use-debounce";
 import { Input } from "./ui/input";
 import { useEffect, useState } from "react";
-import { SearchedPosts } from "./SearchedPosts";
 
 export default function Search({ placeholder }) {
   const [text, setText] = useState("");
@@ -29,19 +28,18 @@ export default function Search({ placeholder }) {
   };
 
   return (
-    <div className="relative flex flex-1 flex-shrink-0">
+    <div className="relative flex justify-center">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
+      <MagnifyingGlassIcon className="relative left-8 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-100 peer-focus:text-gray-500" />
       <Input
-        className="peer block w-full rounded-md border py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+        className="peer block w-1/2 rounded-md border py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
         placeholder={placeholder}
         type="search"
         onChange={handleInput}
         defaultValue={searchParams.get("query")?.toString()}
-        // onKeyUp={e => { runSearch(e); }}
       />
-      <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-100 peer-focus:text-gray-500" />
     </div>
   );
 }

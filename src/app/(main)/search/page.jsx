@@ -1,10 +1,10 @@
 "use server";
+
 import Search from "@/components/Search";
 import { SearchedPosts } from "@/components/SearchedPosts";
 
 const SearchPage = ({ searchParams }) => {
   const query = searchParams?.query || "kdfjhgnvdklxjg";
-  console.log("query ===>", query);
 
   return (
     <div className="wrapper-main gap-10 grid">

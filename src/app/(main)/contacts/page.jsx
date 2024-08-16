@@ -1,4 +1,5 @@
-import { EmailSection } from '@/components/EmailSection';
+import { EmailSection } from "@/components/EmailSection";
+import { MyTabs } from "@/components/Tabs";
 
 export const metadata = {
   title: "Контакты",
@@ -7,9 +8,9 @@ export const metadata = {
 
 const ContactPage = () => {
   return (
-    <div className='wrapper-main'>
+    <div className="wrapper-main">
       <EmailSection />
-      <p className='mt-16'>
+      <p className="mt-16">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem facere
         numquam suscipit eius exercitationem eaque repellat repudiandae tenetur
         deleniti adipisci quam, maiores deserunt perferendis. Totam provident
@@ -22,6 +23,7 @@ const ContactPage = () => {
         fuga quo excepturi adipisci culpa. Iure, repellat. Eaque autem
         doloremque assumenda accusamus excepturi.
       </p>
+      <MyTabs m/>
     </div>
   );
 };

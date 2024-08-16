@@ -39,26 +39,24 @@ export const PostCard = ({ className, post, ...props }) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </CardHeader>
-      <CardContent className="grid gap-4 p-4">
-        <CardTitle className="text-md scroll-m-20 md:text-2xl font-semibold tracking-tight">
+      <CardContent className="grid gap-4 grid-cols-1 p-4">
+        <CardTitle className="text-2xl leading-normal scroll-m-20 md:text-2xl">
           {post.title}
         </CardTitle>
-        <CardDescription className="leading-7">
-          {post.description}
+        <CardDescription className="">
+          {`${post.description.substring(0, 200)}...`}
         </CardDescription>
         <CardFooter className="grid sm:grid sm:grid-cols-2 gap-4 p-0">
           <span>{post.author}</span>
-          <Badge className="sm:place-self-end bg-orange-700 hover:none text-white w-fit">
+          <span className="flex sm:justify-end font-light text-sm">{date}</span>
+          <Badge className="justify-start w-fit rounded-sm" variant="outline">
             {post.category}
           </Badge>
-          <span>{date}</span>
-          <Link
-            className="sm:place-self-end"
-            href={`/blog/${post.id}`}
-            key={post.id}
-          >
-            <Button className="w-fit">Подробнее</Button>
-          </Link>
+          <Button className="w-fit sm:place-self-end">
+            <Link href={`/blog/${post.id}`} key={post.id}>
+              Подробнее
+            </Link>
+          </Button>
         </CardFooter>
       </CardContent>
     </Card>

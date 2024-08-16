@@ -2,7 +2,10 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
 import { Rubik } from "next/font/google";
 
-const rubik = Rubik({ subsets: ["cyrillic"] });
+const rubik = Rubik({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-sans",
+});
 
 export const metadata = {
   title: {

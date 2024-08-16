@@ -5,16 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+
 import {
   Form,
   FormControl,
@@ -31,77 +22,79 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "./ui/textarea";
-import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
+import { useEffect, useState } from "react";
+import { createPost } from "@/libs/actions";
+import { useToast } from "@/components/ui/use-toast";
+import Tiptap from "@/components/Tiptap";
 import { useRouter } from "next/navigation";
-import { FormSchema, updatePost } from "@/libs/actions";
-import { PostForm } from "./PostForm";
 
-// const formSchema = z.object({
-//   title: z.string().min(2, {
-//     message: 'Заголовок должен содержать не менее 2 символов',
-//   }),
-//   description: z.string().min(10, {
-//     message: 'Описание должен содержать не менее 10 символов',
-//   }),
-//   author: z.string().min(2, {
-//     message: 'Поле автор должно содержать не менее 10 символов',
-//   }),
-//   category: z.string(), // Validation by select a few SelectItem
-//   image: z.string().optional(),
-//   text: z.string().min(2, {
-//     message: 'Текст должен содержать не менее 100 символов',
-//   }),
-// });
+const formSchema = z.object({
+  title: z.string().trim().min(5, {
+    message: "Заголовок должен содержать не менее 5 символов",
+  }),
+  description: z.string().trim().min(10, {
+    message: "Описание должно содержать не менее 10 символов",
+  }),
+  image: z.string().url().optional(),
+  text: z.string().trim().min(100, {
+    message: "Текст должен содержать не менее 100 символов",
+  }),
+  author: z.string().trim().min(5, {
+    message: "Поле автор должно содержать не менее 5 символов",
+  }),
+  category: z.string(), // Validation select a few SelectItem
+});
 
-export function UpdatePost(post) {
-  const [open, setOpen] = useState(false);
-  // const router = useRouter();
+// export const metadata = {
+//   title: "Добавить пост",
+//   description: "Блог адвоката Романа Фёдоровича Мордвинцева",
+// };
 
-  // console.log(id);
+const AddPostPage = () => {
+  const router = useRouter();
+  const form = useForm({
+    mode: "onChange",
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      author: "",
+      category: "",
+      image: "",
+      text: "",
+    },
+  });
 
-  // const onSubmit = (post) => {
-  //   // setOpen(false);
-  //   // updatePost(post);
-  //   router.refresh();
-  //   // router.refresh(`/posts/${post}`);
-  // };
+  const { formState } = form;
+  const { isDirty, isValid, error } = formState;
+
+  const onSubmit = (post) => {
+    createPost(post);
+    form.reset();
+    router.replace('/blog')
+  };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>Редактировать</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Добавить пост</DialogTitle>
-          <DialogDescription>
-            Поля, помеченные * обязательны для заполнения
-          </DialogDescription>
-        </DialogHeader>
-        <PostForm
-          setOpen={setOpen}
-          post={post}
-          // onSubmit={onSubmit}
-        />
-        {/* <Form {...form}>
+    <div className="wrapper-main">
+      <h1 className="title-section">Добавить пост</h1>
+      <div className="flex justify-center">
+        <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(handleSubmit)}
-            className="flex flex-col gap-4 w-full max-w-md space-y-2"
+            className="flex flex-col gap-4 w-full max-w-lg space-y-2"
+            onSubmit={form.handleSubmit(onSubmit)}
           >
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Заголовок</FormLabel>
+                  <FormLabel>Заголовок *</FormLabel>
                   <FormControl>
                     <Input placeholder="Название поста" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name
-                  </FormDescription>
-                  <FormMessage />
+                  <FormDescription>Добавьте заголовок</FormDescription>
+                  <FormMessage error={error} />
                 </FormItem>
               )}
             />
@@ -110,7 +103,7 @@ export function UpdatePost(post) {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Описание</FormLabel>
+                  <FormLabel>Описание *</FormLabel>
                   <FormControl>
                     <Input placeholder="Описание поста" {...field} />
                   </FormControl>
@@ -124,7 +117,7 @@ export function UpdatePost(post) {
               name="author"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Автор</FormLabel>
+                  <FormLabel>Автор *</FormLabel>
                   <FormControl>
                     <Input placeholder="Автор поста" {...field} />
                   </FormControl>
@@ -138,7 +131,7 @@ export function UpdatePost(post) {
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Категория</FormLabel>
+                  <FormLabel>Категория *</FormLabel>
                   <Select onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger>
@@ -156,9 +149,7 @@ export function UpdatePost(post) {
                         Семейный адвокат
                       </SelectItem>
                     </SelectContent>
-                    <FormDescription>
-                      This is your public display name
-                    </FormDescription>
+                    <FormDescription>Выберите категорию</FormDescription>
                   </Select>
                   <FormMessage />
                 </FormItem>
@@ -173,13 +164,12 @@ export function UpdatePost(post) {
                   <FormControl>
                     <Input
                       placeholder="Добавьте изображение"
-                      // type='file'
                       type="text"
                       {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name
+                    Добавьте ссылку на изображение
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -190,26 +180,34 @@ export function UpdatePost(post) {
               name="text"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Текст</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Текст поста" {...field} />
-                  </FormControl>
+                  <FormLabel>Текст *</FormLabel>
+                  {/* <FormControl> */}
+                  {/* <Textarea placeholder="Текст поста" {...field} /> */}
+                  <Tiptap
+                    {...field}
+                    // description={field.name}
+                    // onChange={field.onChange}
+                    // placeholder="Текст поста"
+                  />
+                  {/* </FormControl> */}
                   <FormDescription>Добавьте текст поста</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Сохранить</Button>
-          </form>
-        </Form> */}
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Закрыть
+            <Button
+              className="sm:place-self-end sm:w-fit"
+              type="submit"
+              disabled={!isValid || !isDirty}
+              // onClick={myToast}
+            >
+              Добавить
             </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          </form>
+        </Form>
+      </div>
+    </div>
   );
-}
+};
+
+export default AddPostPage;
