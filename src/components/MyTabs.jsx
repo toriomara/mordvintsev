@@ -1,10 +1,15 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "./ui/button";
 
 export const MyTabs = () => {
   return (
     <Tabs defaultValue="account" className="w-100%">
       <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="account">
+          {/* <Button> */}
+          Account
+          {/* </Button> */}
+        </TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>
       <TabsContent value="account">

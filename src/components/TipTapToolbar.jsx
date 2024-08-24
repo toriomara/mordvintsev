@@ -22,7 +22,7 @@ import {
 import { Toggle } from "./ui/toggle";
 import { useCallback } from "react";
 
-const TipTapToolbar = ({ editor, content }) => {
+const TipTapToolbar = ({ editor }) => {
   const setLink = useCallback(() => {
     const previousUrl = editor.getAttributes("link").href;
     const url = window.prompt("URL", previousUrl);
@@ -135,7 +135,6 @@ const TipTapToolbar = ({ editor, content }) => {
       <Toggle onClick={() => editor.chain().focus().redo().run()}>
         <Redo2 className="h-4 w-4" />
       </Toggle>
-      {content}
     </div>
   );
 };

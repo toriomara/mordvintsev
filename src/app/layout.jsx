@@ -1,6 +1,6 @@
-import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
 import { Rubik } from "next/font/google";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const rubik = Rubik({
   subsets: ["latin", "cyrillic"],
@@ -9,8 +9,8 @@ const rubik = Rubik({
 
 export const metadata = {
   title: {
-    template: "%s | Сайт Адвоката Р.Ф. Мордвинцева",
-    default: "Сайт Адвоката Р.Ф. Мордвинцева",
+    template: "%s | Адвокат Р.Ф. Мордвинцев",
+    default: "Адвокат Р.Ф. Мордвинцев",
   },
   description: "The official Next.js Learn Dashboard built with App Router.",
   metadataBase: new URL("https://mordvintsev.vercel.app"),

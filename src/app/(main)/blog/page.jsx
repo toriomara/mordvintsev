@@ -18,9 +18,9 @@ export default function BlogPage() {
         <h1 className="title-section">Блог</h1>
         <div className="space-x-6 mb-6">
           <AddPost />
-          <Link href="/addpost">
-            <Button>Добавить пост</Button>
-          </Link>
+          <Button>
+            <Link href="/addpost">Добавить пост</Link>
+          </Button>
         </div>
         <Suspense fallback={<Loader />}>
           <PostList />

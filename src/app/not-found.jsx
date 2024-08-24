@@ -24,16 +24,20 @@ export default function NotFound() {
               <ArrowLeft className="h-5 w-5 mr-2" />
               Назад
             </Button>
-            <Link
-              href="/"
-              className="text-primary text-sm font-semibold hover:bg-secondary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-            >
-              На главную
-            </Link>
+            <Button variant="outline">
+              <Link
+                href="/"
+                className="text-primary text-sm font-semibold hover:bg-secondary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+              >
+                На главную
+              </Link>
+            </Button>
           </div>
-          <Link href="/" className="text-sm font-semibold">
-            Связаться с поддержкой
-          </Link>
+          <Button variant="outline">
+            <Link href="/" className="text-sm font-semibold">
+              Связаться с поддержкой
+            </Link>
+          </Button>
         </div>
       </main>
     </>

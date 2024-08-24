@@ -1,5 +1,5 @@
-"use client";
 // Remove later (when added post by page)
+"use client";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -71,8 +71,6 @@ export function AddPost() {
       text: "",
     },
   });
-
-  console.log(form);
 
   const { formState } = form;
   const { isDirty, isValid, error } = formState;

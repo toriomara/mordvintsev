@@ -1,14 +1,14 @@
-'use client';
-import Image from 'next/image';
-import { useTransition, useState } from 'react';
-import TabButton from './TabButton';
+"use client";
+import { useTransition, useState } from "react";
+import Image from "next/image";
+import TabButton from "./TabButton";
 
 const TAB_DATA = [
   {
-    title: 'Skills',
-    id: 'skills',
+    title: "Skills",
+    id: "skills",
     content: (
-      <ul className='list-disc pl-2'>
+      <ul className="list-disc pl-2">
         <li>Node.js</li>
         <li>Express</li>
         <li>PostgreSQL</li>
@@ -19,20 +19,20 @@ const TAB_DATA = [
     ),
   },
   {
-    title: 'Education',
-    id: 'education',
+    title: "Education",
+    id: "education",
     content: (
-      <ul className='list-disc pl-2'>
+      <ul className="list-disc pl-2">
         <li>Fullstack Academy of Code</li>
         <li>University of California, Santa Cruz</li>
       </ul>
     ),
   },
   {
-    title: 'Certification',
-    id: 'certification',
+    title: "Certification",
+    id: "certification",
     content: (
-      <ul className='list-disc pl-2'>
+      <ul className="list-disc pl-2">
         <li>AWS Cloud Practitioner</li>
         <li>Google Professional Cloud Developer</li>
       </ul>
@@ -41,7 +41,7 @@ const TAB_DATA = [
 ];
 
 export const AboutSection = () => {
-  const [tab, setTab] = useState('skills');
+  const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -50,53 +50,37 @@ export const AboutSection = () => {
   };
 
   return (
-    <section className='grid md:grid-cols-2 gap-8 items-start xl:gap-16 md:my-12 md:pb-12'>
+    <section className="grid md:grid-cols-2 gap-8 items-start xl:gap-16 md:my-12 md:pb-12">
       <Image
-        src='https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        src="https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         // width={200}
         width={150}
         height={150}
-        alt='Noname'
+        alt="Noname"
       />
-      <div className='flex flex-col h-full mt-4 md:mt-0 text-left'>
-        <h2 className='title-section md:text-start mb-4 md:mb-6'>Обо мне</h2>
-        {/* <p className='text-base lg:text-lg'>
-          [Здесь нужно больше информации о профессиональном пути]
-          <br />
-          <br />
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur ut
-          doloremque molestiae quia sit voluptas quas odio, aperiam perferendis
-          quod suscipit neque amet ullam optio quibusdam iusto excepturi nam! Ex
-          explicabo veritatis quod atque quis saepe repudiandae enim. Ipsum
-          aperiam reiciendis iste totam. Sint impedit libero possimus sunt
-          obcaecati eum, explicabo soluta voluptatem harum aperiam accusamus
-          adipisci architecto error tempore itaque, aut aliquam eligendi quae
-          ea! Quam voluptate quisquam ratione veritatis, itaque ipsam doloremque
-          iure? Quo nulla maxime officiis ipsam animi commodi iste nostrum in,
-          aliquam similique alias voluptatibus at, numquam optio tenetur
-          inventore dolores necessitatibus modi fuga sequi magnam.
-        </p> */}
-        <div className='flex flex-row justify-start mt-8'>
+      <div className="flex flex-col h-full mt-4 md:mt-0 text-left">
+        <h2 className="title-section md:text-start mb-4 md:mb-6">Обо мне</h2>
+        <div className="flex flex-row justify-start mt-8">
           <TabButton
-            selectTab={() => handleTabChange('skills')}
-            active={tab === 'skills'}
+            selectTab={() => handleTabChange("skills")}
+            active={tab === "skills"}
           >
             Области права
           </TabButton>
           <TabButton
-            selectTab={() => handleTabChange('education')}
-            active={tab === 'education'}
+            selectTab={() => handleTabChange("education")}
+            active={tab === "education"}
           >
             Образование
           </TabButton>
           <TabButton
-            selectTab={() => handleTabChange('certification')}
-            active={tab === 'certification'}
+            selectTab={() => handleTabChange("certification")}
+            active={tab === "certification"}
           >
             Достижения
           </TabButton>
         </div>
-        <div className='mt-8'>{TAB_DATA.find((t) => t.id === tab).content}</div>
+        <div className="mt-8">{TAB_DATA.find((t) => t.id === tab).content}</div>
       </div>
     </section>
   );

@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { MobileMenu } from "./MobileMenu";
 import { navLinks } from "@/constants";
 import { ModeToggle } from "./ui/mode-toggle";
-// import { SearchBlock } from "./SearchBlock";
 import { SearchBlock } from "./SearchBlock";
 import { SearchBlock2 } from "./SearchBlock2";
 import { SearchBlock3 } from "./SearchBlock3";
@@ -14,8 +12,8 @@ import { useActivePath } from "@/hooks/usePathHelper";
 import { Button } from "./ui/button";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import { Dialog, DialogTrigger } from "./ui/dialog";
 import { Phone } from "lucide-react";
+import { FaPhoneAlt } from "react-icons/fa";
 
 export const Navbar = () => {
   const checkActivePath = useActivePath();
@@ -46,9 +44,9 @@ export const Navbar = () => {
         <div className="flex gap-2">
           <div className="hidden xs:flex">
             {/* <SearchBlock3 /> */}
-            <Button variant="ghost" size="icon" className="mr-2">
+            <Button variant="ghost" size="icon" className="mr-2 text-lg">
               <a href="tel:+79608670139">
-                <Phone className="self-center text-green-600" />
+                <FaPhoneAlt className="self-center text-blue-500 dark:text-green-600" />
               </a>
             </Button>
             <Link href="/search">

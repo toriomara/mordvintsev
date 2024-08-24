@@ -1,10 +1,14 @@
+"use server";
+
 import { Suspense } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Loader } from "@/components/ui/loader";
 import { getPostById } from "@/libs/data";
 import { DeletePost } from "@/components/DeletePost";
 import { EditPost } from "@/components/EditPost";
 import { Sidebar } from "@/components/Sidebar";
+import { Button } from "@/components/ui/button";
 
 export default async function Post({ params }) {
   const post = await getPostById(params.id);
@@ -39,6 +43,9 @@ export default async function Post({ params }) {
             <div className="flex gap-4 py-4">
               <DeletePost id={post.id} />
               <EditPost post={post} params={params} />
+              <Link href={{ pathname: `/editpost/${post.id}`, query: post }}>
+                <Button>Редактировать на странице</Button>
+              </Link>
             </div>
           </article>
         </Suspense>

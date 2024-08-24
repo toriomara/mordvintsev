@@ -1,5 +1,5 @@
 import { EmailSection } from "@/components/EmailSection";
-import { MyTabs } from "@/components/Tabs";
+import { MyTabs } from "@/components/MyTabs";
 
 export const metadata = {
   title: "Контакты",
@@ -23,7 +23,7 @@ const ContactPage = () => {
         fuga quo excepturi adipisci culpa. Iure, repellat. Eaque autem
         doloremque assumenda accusamus excepturi.
       </p>
-      <MyTabs m/>
+      <MyTabs/>
     </div>
   );
 };

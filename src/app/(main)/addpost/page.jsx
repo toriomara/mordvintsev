@@ -22,8 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { useEffect, useState } from "react";
 import { createPost } from "@/libs/actions";
 import { useToast } from "@/components/ui/use-toast";
 import Tiptap from "@/components/Tiptap";
@@ -45,11 +43,6 @@ const formSchema = z.object({
   }),
   category: z.string(), // Validation select a few SelectItem
 });
-
-// export const metadata = {
-//   title: "Добавить пост",
-//   description: "Блог адвоката Романа Фёдоровича Мордвинцева",
-// };
 
 const AddPostPage = () => {
   const router = useRouter();

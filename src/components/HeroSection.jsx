@@ -46,21 +46,21 @@ export const HeroSection = () => {
             адвоката и услуги юридического сопровождения бизнеса
           </p>
           <div className="gap-4 grid xs:flex sm:grid lg:flex justify-center sm:justify-start">
-            <Button className="bg-popover" variant="outline">
-              <a className="flex items-center" href="tel:+79608670139">
-                <FaPhoneAlt size={16} className="relative mr-3" />
+            <a className="flex items-center" href="tel:+79608670139">
+              <FaPhoneAlt size={16} className="relative mr-3" />
+              <Button className="bg-popover" variant="outline">
                 Позвонить
-              </a>
-            </Button>
-            <Button className="px-6 py-2" variant="secondary">
-              <a
-                className="flex items-center"
-                href="mailto:r.mordvintseff@yandex.ru"
-              >
+              </Button>
+            </a>
+            <a
+              className="flex items-center"
+              href="mailto:r.mordvintseff@yandex.ru"
+            >
+              <Button className="px-6 py-2" variant="secondary">
                 <FaEnvelope size={16} className="relative mr-3" />
                 Написать
-              </a>
-            </Button>
+              </Button>
+            </a>
           </div>
         </motion.div>
         <motion.div

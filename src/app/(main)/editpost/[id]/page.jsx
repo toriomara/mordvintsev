@@ -1,22 +1,10 @@
-// Remove later (when added post by page)
 "use client";
 
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -33,9 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "./ui/textarea";
 import { updatePost } from "@/libs/actions";
-import Tiptap from "./Tiptap";
+import { useRouter, useSearchParams } from "next/navigation";
+import Tiptap from "@/components/Tiptap";
 
 const formSchema = z.object({
   title: z.string().trim().min(5, {
@@ -54,41 +42,44 @@ const formSchema = z.object({
   }),
 });
 
-export function EditPost(props) {
-  const [open, setOpen] = useState(false);
+export default function EditPostPage(props) {
   const { params } = props;
+  // const post = props?.post;
 
-  const post = props?.post;
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const title = searchParams.get("title");
+  const description = searchParams.get("description");
+  const image = searchParams.get("image");
+  const text = searchParams.get("text");
+  const author = searchParams.get("author");
+  const category = searchParams.get("category");
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: post?.title || "",
-      description: post?.description || "",
-      image: post?.image || "",
-      text: post?.text || "",
-      author: post?.author || "",
-      category: post?.category || "",
+      title: title || "",
+      description: description || "",
+      image: image || "",
+      text: text || "",
+      author: author || "",
+      category: category || "",
     },
   });
 
+  const { formState } = form;
+  const { isDirty, isValid, error } = formState;
+
   const onSubmit = (post) => {
-    setOpen(false);
     updatePost(post, params);
+    router.push(`/blog/${params.id}`);
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>Редактировать</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Добавить пост</DialogTitle>
-          <DialogDescription>
-            Поля, помеченные * обязательны для заполнения
-          </DialogDescription>
-        </DialogHeader>
+    <div className="wrapper-main">
+      <h1 className="title-section">Редактировать пост</h1>
+      <div className="flex justify-center">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -178,7 +169,7 @@ export function EditPost(props) {
                   <FormControl>
                     <Input
                       placeholder="Добавьте изображение"
-                      // type='file'
+                      // type="file"
                       type="text"
                       {...field}
                     />
@@ -196,23 +187,18 @@ export function EditPost(props) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Текст</FormLabel>
-                  <Tiptap {...field} />
+                  <Tiptap {...field} content={text} />
                   <FormDescription>Добавьте текст поста</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Сохранить</Button>
+            <Button type="submit" disabled={!isValid || !isDirty}>
+              Сохранить
+            </Button>
           </form>
         </Form>
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Закрыть
-            </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </div>
   );
 }
