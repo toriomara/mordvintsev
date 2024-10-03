@@ -4,20 +4,19 @@ import Link from "next/link";
 import { MobileMenu } from "./MobileMenu";
 import { navLinks } from "@/constants";
 import { ModeToggle } from "./ui/mode-toggle";
-import { SearchBlock } from "./SearchBlock";
-import { SearchBlock2 } from "./SearchBlock2";
-import { SearchBlock3 } from "./SearchBlock3";
 import { Logo } from "./Logo";
 import { useActivePath } from "@/hooks/usePathHelper";
 import { Button } from "./ui/button";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import { Phone } from "lucide-react";
 import { FaPhoneAlt } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const checkActivePath = useActivePath();
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
     <header className="sticky top-0 backdrop-blur bg-background/50 border-b border-custom z-10">
       <nav className="wrapper-header mx-auto flex items-center justify-between max-w-screen-xl">
@@ -43,7 +42,6 @@ export const Navbar = () => {
         </div>
         <div className="flex gap-2">
           <div className="hidden xs:flex">
-            {/* <SearchBlock3 /> */}
             <Button variant="ghost" size="icon" className="mr-2 text-lg">
               <a href="tel:+79608670139">
                 <FaPhoneAlt className="self-center text-blue-500 dark:text-green-600" />

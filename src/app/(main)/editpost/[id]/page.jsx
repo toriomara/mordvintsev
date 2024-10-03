@@ -1,8 +1,8 @@
 "use client";
 
+import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -42,10 +42,7 @@ const formSchema = z.object({
   }),
 });
 
-export default function EditPostPage(props) {
-  const { params } = props;
-  // const post = props?.post;
-
+export default function EditPostPage({ params }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -55,7 +52,7 @@ export default function EditPostPage(props) {
   const text = searchParams.get("text");
   const author = searchParams.get("author");
   const category = searchParams.get("category");
-
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -67,10 +64,10 @@ export default function EditPostPage(props) {
       category: category || "",
     },
   });
-
+  
   const { formState } = form;
   const { isDirty, isValid, error } = formState;
-
+  
   const onSubmit = (post) => {
     updatePost(post, params);
     router.push(`/blog/${params.id}`);

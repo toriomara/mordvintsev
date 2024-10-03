@@ -3,7 +3,7 @@ import React from "react";
 export const Sidebar = () => {
   return (
     <div className="sticky self-start w-64 top-[94px]">
-      Side sdsd menu
+      <h2 className="font-bold text-lg">[Side Bar Menu]</h2>
       <h2>Ever</h2>
       <h2>Ever</h2>
       <h2>Ever</h2>

@@ -96,7 +96,7 @@ export const Footer = () => {
             © {new Date().getFullYear()} Адвокат Р.Ф. Мордвинцев. Все права
             защищены
           </span>
-          <SocialIcons />
+          <SocialIcons layout={'flex'} />
         </div>
       </div>
     </footer>

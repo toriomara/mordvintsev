@@ -8,10 +8,9 @@ export const NavLink = ({ link }) => {
     <DrawerClose asChild>
       <Link
         className={`${
-          // pathname.includes(link.path)
           pathname === link.path
-            ? "text-red-500 text-lg"
-            : "hover:text-red-300 text-lg"
+            ? "text-primary text-lg"
+            : "hover:text-primary-[300] text-lg"
         }`}
         href={link.path}
       >

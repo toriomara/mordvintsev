@@ -6,9 +6,9 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 
-export const SocialIcons = () => {
+export const SocialIcons = (props) => {
   return (
-    <div className="flex gap-4 self-center">
+    <div className={`${props.layout} gap-4 self-center`}>
       <Link
         href="#"
         className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
@@ -44,4 +44,3 @@ export const SocialIcons = () => {
     </div>
   );
 };
-

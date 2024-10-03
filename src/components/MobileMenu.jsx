@@ -5,19 +5,17 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ModeToggle } from "./ui/mode-toggle";
 import { SearchBlock } from "./SearchBlock";
 import { SocialIcons } from "./SocialIcons";
 import { PhoneBlock } from "./PhoneBlock";
-import { FaBars, FaCat } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 export function MobileMenu({ links }) {
@@ -28,7 +26,6 @@ export function MobileMenu({ links }) {
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <Button variant="ghost" size="icon">
-            {/* <HamburgerMenuIcon size={20} /> */}
             <FaBars size={20} />
           </Button>
         </DrawerTrigger>
@@ -37,7 +34,6 @@ export function MobileMenu({ links }) {
             <ModeToggle />
             <DrawerClose asChild>
               <Button variant="ghost" size="icon">
-                {/* <Cross1Icon size={20} /> */}
                 <IoClose size={24} />
               </Button>
             </DrawerClose>
@@ -46,8 +42,6 @@ export function MobileMenu({ links }) {
             <DrawerTitle className="text-center">Поиск</DrawerTitle>
             <SearchBlock />
           </div>
-          {/* <DrawerDescription className="flex auto-rows-min justify-between">
-          </DrawerDescription> */}
           <div className="p-4">
             <div className="mt-3 h-[120px]">
               <nav className="flex flex-col items-center">
@@ -60,7 +54,7 @@ export function MobileMenu({ links }) {
             </div>
           </div>
           <DrawerFooter className="flex-row justify-between">
-            <SocialIcons />
+            <SocialIcons layout={"flex"} />
             <PhoneBlock />
           </DrawerFooter>
         </DrawerContent>

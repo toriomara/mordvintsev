@@ -60,7 +60,6 @@ body {
 
   .dark {
     --background: 100 14.3% 4.1%;
-    /* --background: 210	29%	6%; */
     --foreground: 0 0% 95%;
     --card: 136 0% 8%;
     --card-foreground: 0 0% 95%;
@@ -89,6 +88,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.bg-patern {
+  @apply bg-[radial-gradient(#e5ebe52d_1px,transparent_1px)] [background-size:40px_40px];
 }
 
 .input-simple {
@@ -121,4 +124,8 @@ body {
 
 .border-custom {
   @apply border-[#ced4e4] dark:border-[#1a1f30];
+}
+
+.centered {
+  @apply flex h-screen justify-center items-center;
 }

@@ -30,14 +30,16 @@ export const PostCard = ({ className, post, ...props }) => {
       {...props}
     >
       <CardHeader className="relative">
-        <Image
-          className="object-cover rounded-t-md md:rounded-l-md md:rounded-r-none"
-          src={post.image}
-          alt={post.title}
-          priority
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+        <Link href={`/blog/${post.id}`} key={post.id}>
+          <Image
+            className="object-cover rounded-t-md md:rounded-l-md md:rounded-r-none"
+            src={post.image}
+            alt={post.title}
+            priority
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </Link>
       </CardHeader>
       <CardContent className="grid gap-4 grid-cols-1 p-4">
         <CardTitle className="text-2xl leading-normal scroll-m-20 md:text-2xl">
@@ -52,11 +54,13 @@ export const PostCard = ({ className, post, ...props }) => {
           <Badge className="justify-start w-fit rounded-sm" variant="outline">
             {post.category}
           </Badge>
-          <Button className="w-fit sm:place-self-end">
-            <Link href={`/blog/${post.id}`} key={post.id}>
-              Подробнее
-            </Link>
-          </Button>
+          <Link
+            className="w-fit sm:place-self-end"
+            href={`/blog/${post.id}`}
+            key={post.id}
+          >
+            <Button>Подробнее</Button>
+          </Link>
         </CardFooter>
       </CardContent>
     </Card>
