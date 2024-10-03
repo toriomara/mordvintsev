@@ -21,7 +21,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body className={rubik.className}>
-        <ClerkProvider>
+        <ClerkProvider
+          // {...pageProps}
+          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
