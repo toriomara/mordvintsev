@@ -1,41 +1,38 @@
-"use client";
+"use server";
 
 import { FaEnvelope, FaVk, FaOdnoklassniki } from "react-icons/fa";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Card } from "./ui/card";
+import { SocialIcons } from "./SocialIcons";
 
 export const EmailSection = () => {
   return (
-    <section className="grid w-full md:grid-cols-2 wrapper-section gap-6">
+    <Card className="grid md:grid-cols-2 w-full wrapper-section gap-6 p-6">
       <div className="">
-        <h5 className="text-xl font-bold mb-2">Свяжитесь со мной</h5>
-        <p className="mb-4 max-w-md">
-          Изложите в сообщении суть обращения и/или ваш вопрос. Я обязательно
-          отвечу на него. Обычно время ответа не более двух дней.
+        <h5 className="w-full mb-2 text-2xl font-semibold">
+          Необходима консультация?
+        </h5>
+        <p className="w-full mb-4 font-light text-muted-foreground">
+          Задайте ваш вопрос и я обязательно отвечу на него. Обычно время ответа
+          не более двух дней.
         </p>
-        <p className="mb-4 max-w-md">
-          Также вы можете задать мне вопрос в социальных сетях, перейдя по
-          ссылкам ниже
+        <p className="w-full mb-6 text-muted-foreground">
+          Также вы можете задать мне вопрос в социальных сетях и мессенджерах,
+          перейдя по ссылкам ниже
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://vk.com" target="_blank">
-            <FaVk size={30} />
-          </Link>
-          <Link href="https://odnoklassniki.com" target="_blank">
-            <FaOdnoklassniki size={30} />
-          </Link>
-        </div>
+        <SocialIcons layout={"flex"} />
       </div>
       <div>
-        <form className="">
-          <div className="flex justify-between mb-6">
-            <div className="">
+        <form>
+          <div className="block justify-between sm:flex sm:space-x-8 mb-1">
+            <div className="w-full sm:w-1/2 mb-6 sm:mb-0">
               <label className="block mb-2 text-sm font-medium" htmlFor="email">
-                Почта
+                Почта *
               </label>
               <Input
-                className="contact-input"
                 name="email"
                 type="email"
                 id="email"
@@ -43,13 +40,11 @@ export const EmailSection = () => {
                 placeholder="ivan.baryshnikov@yandex.ru"
               />
             </div>
-            <span className="self-center">или</span>
-            <div>
+            <div className="w-full sm:w-1/2">
               <label className="block mb-2 text-sm font-medium" htmlFor="phone">
-                Телефон
+                Телефон *
               </label>
               <Input
-                className="contact-input"
                 name="phone"
                 type="phone"
                 id="phone"
@@ -58,48 +53,54 @@ export const EmailSection = () => {
               />
             </div>
           </div>
+          <div className="flex justify-end mb-6 text-mx font-light leading-3">
+            <span className="pr-1">*</span>
+            <div>Необходимо заполнить поле Почта или Телефон</div>
+          </div>
           <div className="mb-6">
             <label
-              className="block mb-2  text-sm font-medium "
+              className="block mb-2 text-sm font-medium "
               htmlFor="subject"
             >
               Тема обращения
             </label>
             <Input
-              className="contact-input"
               name="subject"
               type="text"
               id="subject"
               required
-              placeholder="Спор при межевании земельного участка"
+              placeholder="Например, спор при межевании земельного участка"
             />
           </div>
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium" htmlFor="message">
               Текст обращения
             </label>
-            <textarea
-              className="contact-input"
+            <Textarea
               name="message"
               id="message"
               placeholder="Опишите вашу ситуацию"
             />
-            <div className="flex mt-1 justify-end">
-              <p className="text-xs font-thin">
-                * Нажимая кнопку, вы даете согласие на{" "}
-                <span className="underline decoration-dotted">
-                  обработку персональных данных
-                </span>
-              </p>
+            <div className="flex mt-1 text-mx font-light leading-3">
+              <div className="pr-1">**</div>
+              <div>
+                Нажимая кнопку, вы даете{" "}
+                <Link className="hover:underline" href="/agreement">
+                  согласие на обработку персональных данных
+                </Link>
+                . Подробнее об обработке данных в{" "}
+                <Link className="hover:underline" href="/privacy">
+                  Политике
+                </Link>
+              </div>
             </div>
           </div>
-          {/* Make rising form when mouse hover */}
           <Button className="w-full" type="submit">
             <FaEnvelope className="h-4 w-4 mr-2" />
             Отправить
           </Button>
         </form>
       </div>
-    </section>
+    </Card>
   );
 };

@@ -1,9 +1,10 @@
 import "./globals.css";
-import { Rubik } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { cn } from "@/libs/utils";
 
-const rubik = Rubik({
+const inter = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-sans",
 });
@@ -19,8 +20,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ru">
-      <body className={rubik.className}>
+    <html lang="ru" suppressHydrationWarning={true}>
+      <body className={cn(inter.className, "auto")}>
         <ClerkProvider
           // {...pageProps}
           publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}

@@ -40,7 +40,7 @@ export default async function Post({ params }) {
             <div className="hidden sm:grid col-span-1 sm:self-start">
               <SocialIcons layout={"grid"} />
             </div>
-            <div className="col-span-2 sm:col-span-1 relative w-full h-80">
+            <div className="relative col-span-2 sm:col-span-1 w-full h-80">
               <Image
                 className="top-0 left-0 object-cover rounded-md"
                 src={post.image}

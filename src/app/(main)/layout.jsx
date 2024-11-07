@@ -7,7 +7,8 @@ export default function Layout({ children }) {
   return (
     <>
       {/* https://bg.ibelick.com/ - bg from this site*/}
-      <div className="flex-1 inset-0 -z-100 h-full w-full bg-patern">
+      {/* <div className="flex-1 inset-0 -z-100 h-full w-full bg-patern"> */}
+      <div className="flex-1 inset-0 -z-100 h-full w-full">
         <Navbar />
         <main className="max-w-screen-xl mx-auto">
           {children}

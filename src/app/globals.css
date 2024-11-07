@@ -52,16 +52,16 @@ body {
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
+    --border: 212, 27%, 89%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 100 14.3% 4.1%;
+    --background: 214 25% 11%;
     --foreground: 0 0% 95%;
-    --card: 136 0% 8%;
+    --card: 212, 19%, 16%;
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 9%;
     --popover-foreground: 0 0% 95%;
@@ -75,7 +75,7 @@ body {
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
+    --border: 214, 12%, 27%;
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
   }
@@ -94,16 +94,8 @@ body {
   @apply bg-[radial-gradient(#e5ebe52d_1px,transparent_1px)] [background-size:40px_40px];
 }
 
-.input-simple {
-  @apply outline-none focus:ring border border-custom placeholder-slate-800 dark:placeholder-[#9ca2a9] text-gray-100 text-sm rounded-sm bg-transparent;
-}
-
-.contact-input {
-  @apply outline-none focus:ring bg-slate-50 dark:bg-[#18191e] border border-[#b9b9b9] dark:border-[#33353f] placeholder-slate-800 dark:placeholder-[#9ca2a9] text-gray-100 text-sm rounded-lg block w-full p-2.5;
-}
-
 .wrapper-main {
-  @apply px-6 my-4 pb-3 xs:px-8 xs:my-6 xs:pb-4 sm:px-12 md:px-20 lg:py-4 2xl:px-4;
+  @apply px-6 my-6 pb-3 xs:px-8 xs:my-6 xs:pb-4 sm:px-12 md:px-20 lg:py-4 2xl:px-4;
 }
 
 .wrapper-header {
@@ -122,10 +114,15 @@ body {
   @apply mb-6 text-center text-4xl font-bold md:mb-12;
 }
 
-.border-custom {
-  @apply border-[#ced4e4] dark:border-[#1a1f30];
-}
-
 .centered {
   @apply flex h-screen justify-center items-center;
 }
+
+.paragraph {
+  @apply ml-8 mb-2;
+}
+
+.link {
+  @apply hover:underline hover:opacity-60 transition duration-200 ease-out hover:ease-in;
+}
+

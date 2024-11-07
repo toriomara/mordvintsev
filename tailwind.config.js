@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-import defaultTheme from 'tailwindcss/defaultTheme';
+import defaultTheme from "tailwindcss/defaultTheme";
 
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
-	],
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -55,7 +55,11 @@ module.exports = {
       },
       screens: {
         ...defaultTheme.screens,
-        'xs': '480px',
+        xs: "480px",
+      },
+      fontSize: {
+        ...defaultTheme.fontSize,
+        mx: ["13px", "20x"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -79,4 +83,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

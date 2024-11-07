@@ -1,4 +1,5 @@
 // url: http://localhost:3010/api/posts/post1
+
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 

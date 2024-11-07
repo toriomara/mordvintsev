@@ -18,7 +18,7 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 backdrop-blur bg-background/50 border-b border-custom z-10">
+    <header className="sticky top-0 bg-[#f4f6fb] dark:bg-[#111822] backdrop-blur border-b z-10">
       <nav className="wrapper-header mx-auto flex items-center justify-between max-w-screen-xl">
         <div className="flex items-center gap-10">
           <Logo />
@@ -30,7 +30,7 @@ export const Navbar = () => {
                   href={link.path}
                   className={`${
                     checkActivePath(link.path)
-                      ? "text-blue-400 dark:text-white"
+                      ? "text-blue-700 dark:text-white"
                       : "text-gray-700 dark:text-gray-400 hover:text-black dark:hover:text-white"
                   }`}
                 >
@@ -44,12 +44,12 @@ export const Navbar = () => {
           <div className="hidden xs:flex">
             <Button variant="ghost" size="icon" className="mr-2 text-lg">
               <a href="tel:+79608670139">
-                <FaPhoneAlt className="self-center text-blue-500 dark:text-green-600" />
+                <FaPhoneAlt className="self-center text-blue-700 dark:text-green-600" />
               </a>
             </Button>
             <Link href="/search">
               <Button
-                className="px-4 gray-900 border border-custom shadow"
+                className="px-4 bg-background border"
                 variant="secondary"
                 onClick={() => setOpen(true)}
               >

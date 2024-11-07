@@ -1,40 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import {
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaTelegramPlane,
-  FaVk,
-  FaOdnoklassniki,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { Logo } from "./Logo";
 import { SocialIcons } from "./SocialIcons";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-custom bg-[#f4f6fb] dark:bg-background">
+    <footer className="border-t bg-[#f4f6fb] dark:bg-[#111822]">
       <div className="wrapper-footer max-w-screen-xl mx-auto">
-        <div className="border-b border-custom grid pt-6 pb-6 font-light md:grid-cols-2 lg:grid-cols-12 grid-cols-1 gap-6 justify-between items-start text-gray-900 bg:dark:text-neutral-200 dark:text-neutral-300">
+        <div className="grid border-b pt-6 pb-6 font-light md:grid-cols-2 lg:grid-cols-12 grid-cols-1 gap-6 justify-between items-start text-gray-900 bg:dark:text-neutral-200 dark:text-neutral-300">
           <div className="grid gap-4 lg:col-span-4 md:col-span-1">
             <Logo />
             <h4 className="font-semibold text-xl">Адвокат Р.Ф. Мордвинцев</h4>
             <a
-              className="cursor:pointer"
+              className="cursor:pointer hover:underline"
               href="https://www.apvo-volgograd.ru/lawyer-list/register-lawyers/"
               target="blank"
               rel="noopener noreferrer"
             >
               № 34/1803 в реестре адвокатов Волгоградской области
             </a>
-            <p className="">
+            <p>
               Деятельность осуществляется на основе Федерального закона от 31
               мая 2002 г. N 63-ФЗ «Об адвокатской деятельности и адвокатуре в
               Российской Федерации»
             </p>
+            <Link
+              className="leading-4 text-sm font-light link"
+              href="/privacy"
+            >
+              Политика в отношении обработки персональных данных
+            </Link>
           </div>
           <div className="grid lg:col-span-2 gap-3 md:col-span-1">
             <h4 className="font-semibold text-xl">Информация</h4>
@@ -42,14 +40,23 @@ export const Footer = () => {
               <Link className="max-w-max" href="/">
                 Главная
               </Link>
-              <Link href="/services">Услуги</Link>
-              <Link href="/about">Об адвокате</Link>
-              <Link href="/blog">Блог</Link>
+              <Link className="max-w-max" href="/services">
+                Услуги
+              </Link>
+              <Link className="max-w-max" href="/about">
+                Об адвокате
+              </Link>
+              <Link className="max-w-max" href="/blog">
+                Блог
+              </Link>
             </div>
           </div>
           <div className="grid lg:col-span-4 gap-3 md:col-span-1">
             <h4 className="font-semibold text-xl">Контакты</h4>
-            <Link href="/" className="flex items-start text-sm xs:text-base">
+            <Link
+              href="/"
+              className="flex max-w-max items-start text-sm xs:text-base"
+            >
               <FaMapMarkerAlt
                 size={16}
                 className="relative top-0.5 mr-3 text-gray-500"
@@ -60,7 +67,7 @@ export const Footer = () => {
               </span>
             </Link>
             <Link
-              className="flex items-start text-sm xs:text-base"
+              className="flex max-w-max items-start text-sm xs:text-base"
               href="mailto:r.mordvintseff@ya.ru"
               passHref={true}
             >
@@ -71,32 +78,34 @@ export const Footer = () => {
               <span>r.mordvintseff@yandex.ru</span>
             </Link>
             <Link
-              className="flex items-start text-sm xs:text-base"
+              className="flex max-w-max items-start text-sm xs:text-base"
               href="tel:+79608670139"
               passHref={true}
             >
               <FaPhoneAlt
                 size={16}
-                className="relative top-0.5 mr-3 text-gray-500"
+                className="relative max-w-max top-0.5 mr-3 text-gray-500"
               />
               <span>+7 960 867 01 39</span>
             </Link>
           </div>
-
-          <div className="grid lg:col-span-2 gap-6 md:col-span-1">
+          <div className="grid lg:col-span-2 gap-4 md:col-span-1">
             <h4 className="font-semibold text-xl">Вопрос</h4>
-            <span className="text-sm xs:text-base leading-6">
-              Задать вопрос адвокату
-            </span>
-            <Button variant="outline">Отправить</Button>
+            <span className="text-sm xs:text-base">Задать вопрос адвокату</span>
+            <Button className="w-full" type="submit">
+              Отправить
+            </Button>
           </div>
         </div>
         <div className="grid gap-3 sm:flex sm:justify-between pt-6">
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Адвокат Р.Ф. Мордвинцев. Все права
             защищены
           </span>
-          <SocialIcons layout={'flex'} />
+          <SocialIcons layout={"flex"} />
+        </div>
+        <div className="text-sm text-muted-foreground">
+          Разработка{" "}<a href="#">toriomara</a>
         </div>
       </div>
     </footer>
