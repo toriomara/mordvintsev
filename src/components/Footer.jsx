@@ -104,7 +104,7 @@ export const Footer = () => {
           </span>
           <SocialIcons layout={"flex"} />
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground order-2">
           Разработка{" "}<a href="#">toriomara</a>
         </div>
       </div>

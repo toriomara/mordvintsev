@@ -22,7 +22,7 @@ export const HeroSection = () => {
             </span>
             <br />
             <span className="text-4xl">
-              <TypeAnimation
+              {/* <TypeAnimation
                 sequence={[
                   "Уголовный адвокат",
                   1000,
@@ -36,7 +36,8 @@ export const HeroSection = () => {
                 wrapper="span"
                 speed={10}
                 repeat={Infinity}
-              />
+              /> */}
+              Мой опыт — залог вашего успеха
             </span>
           </h1>
           <p className="mb-6 leading-56 text-base md:text-lg">

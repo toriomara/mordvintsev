@@ -7,6 +7,8 @@ import { cn } from "@/libs/utils";
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-sans",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata = {
