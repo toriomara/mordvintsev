@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  TableFooter
+  TableFooter,
 } from "@/components/ui/table";
 
 const invoices = [
@@ -52,7 +52,7 @@ const invoices = [
     totalAmount: "$300.00",
     paymentMethod: "Credit Card",
   },
-]
+];
 
 const ServicesPage = () => {
   return (
@@ -62,32 +62,39 @@ const ServicesPage = () => {
         elit. Magni, ea.
       </h1>
       <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Invoice</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Method</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {invoices.map((invoice) => (
+            <TableRow key={invoice.invoice}>
+              <TableCell className="font-medium">{invoice.invoice}</TableCell>
+              <TableCell>{invoice.paymentStatus}</TableCell>
+              <TableCell>{invoice.paymentMethod}</TableCell>
+              <TableCell className="text-right">
+                {invoice.totalAmount}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={3}>Total</TableCell>
+            <TableCell className="text-right">$2,500.00</TableCell>
+          </TableRow>
+        </TableFooter>
+      </Table>
+      <div className="flex items-center justify-center h-screen">
+        <span className="text-gray-500 pr-4">Left Text</span>
+        <div className="w-px h-full bg-gray-300"></div>
+        <span className="text-gray-500 pl-4">Right Text</span>
+      </div>
     </div>
   );
 };
