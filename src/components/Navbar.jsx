@@ -23,7 +23,7 @@ export const Navbar = () => {
         <div className="flex items-center gap-10">
           <Logo />
           <div className="menu hidden lg:flex md:w-auto" id="navbar">
-            <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 items-center text-sm lg:text-base font-semibold">
+            <ul className="flex md:flex-row p-4 md:p-0 lg:space-x-5 xl:space-x-10 mt-0 items-center text-sm lg:text-base font-semibold">
               {navLinks.map((link, index) => (
                 <Link
                   key={index}
