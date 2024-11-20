@@ -8,10 +8,10 @@ export const CareerTimeline = () => {
         Профессиональный путь
       </h2>
       <div className="relative wrap overflow-hidden">
-        <div className="border border-2-2 absolute border-gray-700 h-full left-1/2"></div>
+        <div className="border border-2-2 absolute border-gray-700 h-full left-1/2 -z-10"></div>
         <div className="flex justify-between items-center w-full right-timeline mb-8">
           <div className="order-1 w-5/12"></div>
-          <div className="flex items-center order-1 bg-gray-700 shadow-xl w-10 h-10 md:w-16 md:h-16 rounded-full z-20">
+          <div className="flex items-center order-1 bg-gray-700 shadow-xl w-10 h-10 md:w-16 md:h-16 rounded-full">
             <h1 className="mx-auto font-semibold text-[10px] md:text-lg text-white">
               2004
             </h1>
@@ -28,7 +28,7 @@ export const CareerTimeline = () => {
         </div>
         <div className="flex justify-between flex-row-reverse items-center w-full left-timeline mb-8">
           <div className="order-1 w-5/12"></div>
-          <div className="flex items-center order-1 bg-gray-700 shadow-xl w-10 h-10 md:w-16 md:h-16 rounded-full z-20">
+          <div className="flex items-center order-1 bg-gray-700 shadow-xl w-10 h-10 md:w-16 md:h-16 rounded-full">
             <h1 className="mx-auto font-semibold text-[10px] md:text-lg text-white">
               2014
             </h1>
@@ -47,7 +47,7 @@ export const CareerTimeline = () => {
         </div>
         <div className="flex justify-between items-center w-full right-timeline mb-8">
           <div className="order-1 w-5/12"></div>
-          <div className="flex items-center order-1 bg-gray-700 shadow-xl w-10 h-10 md:w-16 md:h-16 rounded-full z-20">
+          <div className="flex items-center order-1 bg-gray-700 shadow-xl w-10 h-10 md:w-16 md:h-16 rounded-full">
             <h1 className="mx-auto font-semibold text-[10px] md:text-lg text-white">
               2021
             </h1>

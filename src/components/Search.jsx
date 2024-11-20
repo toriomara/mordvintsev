@@ -1,6 +1,6 @@
 "use client";
 
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { AiOutlineSearch } from "react-icons/ai";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebounce } from "use-debounce";
 import { Input } from "./ui/input";
@@ -32,7 +32,7 @@ export default function Search({ placeholder }) {
       <label htmlFor="search" className="sr-only">
         Search
       </label>
-      <MagnifyingGlassIcon className="relative left-8 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-100 peer-focus:text-gray-500" />
+      <AiOutlineSearch className="relative left-8 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-100 peer-focus:text-gray-500" />
       <Input
         className="peer block w-1/2 rounded-md border py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
         placeholder={placeholder}

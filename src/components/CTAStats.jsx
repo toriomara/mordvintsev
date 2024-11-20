@@ -1,9 +1,5 @@
 import Image from 'next/image';
-import {
-  LockClosedIcon,
-  ServerIcon,
-  FireIcon,
-} from '@heroicons/react/20/solid';
+import { AiFillFire, AiFillLock, AiFillCar  } from "react-icons/ai";
 
 export const CTAStats = () => {
   return (
@@ -54,16 +50,16 @@ const features = [
   {
     name: 'Оперативность.',
     description: 'Выезжаю к подзащитному до заключения договора.',
-    icon: FireIcon,
+    icon: AiFillFire,
   },
   {
     name: 'Оперативность.',
     description: 'Выезжаю к подзащитному до заключения договора.',
-    icon: LockClosedIcon,
+    icon: AiFillLock,
   },
   {
     name: 'Оперативность.',
     description: 'Выезжаю к подзащитному до заключения договора.',
-    icon: ServerIcon,
+    icon: AiFillCar,
   },
 ];

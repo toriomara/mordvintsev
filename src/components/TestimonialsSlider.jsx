@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Transition } from "@headlessui/react";
+import { AiOutlineUser } from "react-icons/ai";
 
 export const TestimonialsSlider = ({ testimonials }) => {
   const testimonialsRef = useRef(null);
@@ -30,7 +31,7 @@ export const TestimonialsSlider = ({ testimonials }) => {
   }, []);
 
   return (
-    <div className="w-full max-w-3xl mx-auto text-center">
+    <div className="w-full max-w-4xl mx-auto text-center">
       {/* Testimonial image */}
       <div className="relative h-32">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-[480px] pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-b before:from-indigo-500/25 before:via-indigo-500/5 before:via-25% before:to-indigo-500/0 before:to-75% before:rounded-full before:-z-10">
@@ -49,13 +50,17 @@ export const TestimonialsSlider = ({ testimonials }) => {
                 leaveTo="opacity-0 rotate-[60deg]"
                 beforeEnter={() => heightFix()}
               >
-                <Image
-                  className="relative top-4 left-1/2 -translate-x-1/2 rounded-full"
-                  src={testimonial.image}
-                  width={100}
-                  height={100}
-                  alt={testimonial.name}
-                />
+                {testimonial.image ? (
+                  <Image
+                    className="relative top-4 left-1/2 -translate-x-1/2 rounded-full"
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={100}
+                    height={100}
+                  />
+                ) : (
+                  <AiOutlineUser className="relative top-4 left-1/2 -translate-x-1/2 rounded-full w-[100px] h-[100px]" />
+                )}
               </Transition>
             ))}
           </div>
@@ -77,7 +82,7 @@ export const TestimonialsSlider = ({ testimonials }) => {
               leaveTo="opacity-0 translate-x-4"
               beforeEnter={() => heightFix()}
             >
-              <div className="text-2xl font-bold  before:content-['\201C'] after:content-['\201D']">
+              <div className="text-xl before:content-['\201C'] after:content-['\201D']">
                 {testimonial.text}
               </div>
             </Transition>

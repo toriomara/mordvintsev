@@ -1,4 +1,4 @@
-import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
+import { AiOutlineEye, AiOutlineContainer } from "react-icons/ai";
 import Link from "next/link";
 
 export const ProjectCard = ({
@@ -19,13 +19,13 @@ export const ProjectCard = ({
             className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#abd7be] hover:border-white group/link"
             href={gitUrl}
           >
-            <CodeBracketIcon className="h-10 w-10 text-[#adb7be] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+            <AiOutlineContainer className="h-10 w-10 text-[#adb7be] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
           </Link>
           <Link
             className="h-14 w-14 border-2 relative rounded-full border-[#abd7be] hover:border-white group/link"
             href={previewUrl}
           >
-            <EyeIcon className="h-10 w-10 text-[#adb7be] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+            <AiOutlineEye className="h-10 w-10 text-[#adb7be] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
           </Link>
         </div>
       </div>

@@ -1,3 +1,5 @@
+// "use client";
+
 import * as React from "react";
 import { NavLink } from "./NavLink";
 import { Button } from "@/components/ui/button";
@@ -12,11 +14,12 @@ import {
 } from "@/components/ui/drawer";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ModeToggle } from "./ui/mode-toggle";
-import { SearchBlock } from "./SearchBlock";
 import { SocialIcons } from "./SocialIcons";
 import { PhoneBlock } from "./PhoneBlock";
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { AiOutlineSearch } from "react-icons/ai";
+import Link from "next/link";
 
 export function MobileMenu({ links }) {
   const isDesktop = useMediaQuery("(max-width: 1024px)");
@@ -40,7 +43,17 @@ export function MobileMenu({ links }) {
           </DrawerHeader>
           <div className="grid gap-3 content-start justify-center p-4">
             <DrawerTitle className="text-center">Поиск</DrawerTitle>
-            <SearchBlock />
+            <DrawerClose asChild>
+              <Link href="/search">
+                <Button
+                  className="px-4 bg-background border"
+                  variant="secondary"
+                >
+                  <AiOutlineSearch className="fill-gray-500 mr-2 h-[20px] w-[20px]" />
+                  <span className="text-gray-400">Ctrl + G</span>
+                </Button>
+              </Link>
+            </DrawerClose>
           </div>
           <div className="p-4">
             <div className="mt-3 h-[120px]">

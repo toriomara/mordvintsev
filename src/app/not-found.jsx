@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ export default function NotFound() {
           </p>
           <div className="my-10 flex items-center justify-center gap-x-6">
             <Button onClick={() => router.back()}>
-              <ArrowLeft className="h-5 w-5 mr-2" />
+              <BsArrowLeft className="h-5 w-5 mr-2" />
               Назад
             </Button>
             <Button variant="outline">

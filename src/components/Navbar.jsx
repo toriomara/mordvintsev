@@ -1,24 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { AiOutlineSearch } from "react-icons/ai";
 import { MobileMenu } from "./MobileMenu";
 import { navLinks } from "@/constants";
 import { ModeToggle } from "./ui/mode-toggle";
 import { Logo } from "./Logo";
 import { useActivePath } from "@/hooks/usePathHelper";
 import { Button } from "./ui/button";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const checkActivePath = useActivePath();
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 bg-[#f4f6fb] dark:bg-[#111822] backdrop-blur border-b z-10">
+    <header className="sticky top-0 bg-[#f4f6fb] dark:bg-[#111822] backdrop-blur border-b z-20">
       <nav className="wrapper-header mx-auto flex items-center justify-between max-w-screen-xl">
         <div className="flex items-center gap-10">
           <Logo />
@@ -51,12 +51,9 @@ export const Navbar = () => {
               <Button
                 className="px-4 bg-background border"
                 variant="secondary"
-                onClick={() => setOpen(true)}
+                // onClick={() => setOpen(true)}
               >
-                <MagnifyingGlassIcon
-                  width={16}
-                  className="fill-gray-500 mr-2"
-                />
+                <AiOutlineSearch className="fill-gray-500 mr-2 h-[20px] w-[20px]" />
                 <span className="text-gray-400">Ctrl + G</span>
               </Button>
             </Link>
