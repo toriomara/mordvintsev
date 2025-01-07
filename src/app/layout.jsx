@@ -7,8 +7,6 @@ import { cn } from "@/libs/utils";
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-sans",
-  display: "swap",
-  adjustFontFallback: false,
 });
 
 export const metadata = {
@@ -25,7 +23,6 @@ export default function RootLayout({ children }) {
     <html lang="ru" suppressHydrationWarning={true}>
       <body className={cn(inter.className, "auto")}>
         <ClerkProvider
-          // {...pageProps}
           publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
         >
           <ThemeProvider

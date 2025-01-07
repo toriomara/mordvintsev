@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  LuHeading1,
   LuHeading2,
   LuHeading3,
   LuPilcrow,
@@ -33,7 +34,6 @@ const TipTapToolbar = ({ editor }) => {
     // empty
     if (url === "") {
       editor.chain().focus().extendMarkRange("link").unsetLink().run();
-
       return;
     }
 
@@ -46,6 +46,15 @@ const TipTapToolbar = ({ editor }) => {
   }
   return (
     <div className="p-1 border border-b-0 rounded-t-md bg-transparent">
+      <Toggle
+        size="sm"
+        pressed={editor.isActive("heading", { level: 1 })}
+        onPressedChange={() =>
+          editor.chain().focus().toggleHeading({ level: 1 }).run()
+        }
+      >
+        <LuHeading1 className="h-4 w-4" />
+      </Toggle>
       <Toggle
         size="sm"
         pressed={editor.isActive("heading", { level: 2 })}

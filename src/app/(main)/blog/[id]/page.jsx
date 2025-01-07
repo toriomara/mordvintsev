@@ -9,10 +9,11 @@ import { EditBlock } from "@/components/EditBlock";
 import { SocialIcons } from "@/components/SocialIcons";
 
 export default async function Post({ params }) {
-  const post = await getPostById(params.id);
-  const text = post.text.split("<>");
+  const newParams = await params;
+  const post = await getPostById(newParams.id);
+  const text = await post.text.split("<>");
 
-  // Remake. Don't folow SOLID(DRY!). Parent component have {date}
+  // Remake. Did't folow SOLID(DRY!). Parent component have {date} yet
   const date = post.createdAt
     .slice(0, 10)
     .replace(/-/g, ".")
@@ -31,7 +32,7 @@ export default async function Post({ params }) {
             </h1>
             <div className="hidden xs:block"></div>
             <div className="grid col-span-2 sm:col-span-1 md:flex md:justify-center items-end md:space-x-6">
-              <span className="text-primary">{post.category}</span>
+              <span className="text-primary self-center">{post.category}</span>
               <span className="text-xl">{post.author}</span>
               <span className="leading-snug font-semibold text-lg text-gray-600 dark:text-gray-400">
                 {date}
@@ -59,7 +60,7 @@ export default async function Post({ params }) {
                 </div>
               ))}
             </div>
-            <div></div>
+            <div />
             <div className="col-span-2 sm:col-span-1">
               <EditBlock post={post} />
             </div>

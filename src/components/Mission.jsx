@@ -1,4 +1,5 @@
 import React from "react";
+import { DotBackgroundDemo } from "./DotBG";
 
 export const Mission = () => {
   return (
@@ -42,7 +43,9 @@ export const Mission = () => {
           </ol>
         </div>
       </div>
-      <div className="basis-1/4">IMAGES</div>
+      <div className="relative basis-1/4 radial-gradient(circle, #000 1px, transparent 1px) dark:bg-dot-green-500 bg-[size:20px_20px] z-90">
+        {/* <DotBackgroundDemo /> */}
+      </div>
     </div>
   );
 };

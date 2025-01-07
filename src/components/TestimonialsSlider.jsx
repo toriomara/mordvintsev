@@ -1,9 +1,10 @@
+// https://cruip.com/how-to-build-a-fancy-testimonial-slider-with-tailwind-css-and-next-js/
 "use client";
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Transition } from "@headlessui/react";
-import { AiOutlineUser } from "react-icons/ai";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
 export const TestimonialsSlider = ({ testimonials }) => {
   const testimonialsRef = useRef(null);
@@ -41,11 +42,9 @@ export const TestimonialsSlider = ({ testimonials }) => {
                 as="div"
                 key={index}
                 show={active === index}
-                className="absolute inset-0 h-full -z-10"
-                enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
+                className="absolute inset-0 h-full -z-10 duration-700"
                 enterFrom="opacity-0 -rotate-[60deg]"
                 enterTo="opacity-100 rotate-0"
-                leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700"
                 leaveFrom="opacity-100 rotate-0"
                 leaveTo="opacity-0 rotate-[60deg]"
                 beforeEnter={() => heightFix()}
@@ -59,7 +58,7 @@ export const TestimonialsSlider = ({ testimonials }) => {
                     height={100}
                   />
                 ) : (
-                  <AiOutlineUser className="relative top-4 left-1/2 -translate-x-1/2 rounded-full w-[100px] h-[100px]" />
+                  <HiOutlineUserCircle className="relative top-4 left-1/2 -translate-x-1/2 rounded-full w-[100px] h-[100px]" />
                 )}
               </Transition>
             ))}
@@ -96,8 +95,8 @@ export const TestimonialsSlider = ({ testimonials }) => {
             key={index}
             className={`inline-flex justify-center whitespace-nowrap rounded-full px-3 py-1.5 m-1.5 text-xs shadow-sm focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ${
               active === index
-                ? "bg-green-500 text-slate-900 shadow-indigo-950/10"
-                : "bg-white hover:bg-indigo-100 text-slate-900"
+                ? "text-white bg-blue-500 dark:bg-green-500 dark:text-slate-900 shadow-indigo-950/10"
+                : "bg-[#f4f6fb] dark:bg-white border border-1 hover:bg-indigo-100 text-slate-900"
             }`}
             onClick={() => {
               setActive(index);
@@ -110,7 +109,7 @@ export const TestimonialsSlider = ({ testimonials }) => {
                 active === index ? "text-indigo-200" : "text-slate-300"
               }`}
             >
-              -
+              {/* - */}
             </span>{" "}
             <span>{testimonial.estimation}</span>
           </button>

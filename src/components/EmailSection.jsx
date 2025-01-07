@@ -8,7 +8,7 @@ import { Textarea } from "./ui/textarea";
 import { Card } from "./ui/card";
 import { SocialIcons } from "./SocialIcons";
 
-export const EmailSection = () => {
+export const EmailSection = async () => {
   return (
     <Card className="grid md:grid-cols-2 w-full wrapper-section gap-6 p-6">
       <div className="">

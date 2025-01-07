@@ -1,5 +1,6 @@
 "use client";
 
+import { use, useEffect, useState, useMemo } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { updatePost } from "@/libs/actions";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Tiptap from "@/components/Tiptap";
 
 const formSchema = z.object({
@@ -30,7 +31,7 @@ const formSchema = z.object({
     message: "Заголовок должен содержать не менее 2 символов",
   }),
   description: z.string().trim().min(10, {
-    message: "Описание должен содержать не менее 10 символов",
+    message: "Описание должно содержать не менее 10 символов",
   }),
   author: z.string().trim().min(2, {
     message: "Поле автор должно содержать не менее 10 символов",
@@ -42,35 +43,61 @@ const formSchema = z.object({
   }),
 });
 
-export default function EditPostPage({ params }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+// const initialPost = {
+//   title: "",
+//   description: "",
+//   image: "",
+//   text: "",
+//   author: "",
+//   category: "",
+// };
 
-  const title = searchParams.get("title");
-  const description = searchParams.get("description");
-  const image = searchParams.get("image");
-  const text = searchParams.get("text");
-  const author = searchParams.get("author");
-  const category = searchParams.get("category");
-  
+export default function EditPostPage(props) {
+  const params1 = use(props.params);
+  const params = params1.id;
+  const router = useRouter();
+  const [post, setPost] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/api/posts/${params}`
+        );
+        const data = await res.json();
+        console.log("1.DATA ==>>>", data);
+        setPost(data);
+      } catch (error) {
+        throw new Error("Невозможно отобразить пост Front");
+      } finally {
+        console.log("EVERYTHING IS OK");
+      }
+    };
+    fetchData();
+  }, [params]);
+
+  console.log("2.NEW POST ==>>>", post);
+  console.log("3.POST ==>>>", post.title);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: title || "",
-      description: description || "",
-      image: image || "",
-      text: text || "",
-      author: author || "",
-      category: category || "",
+    values: {
+      title: post.title,
+      description: post.description,
+      author: post.author,
+      image: post.image,
+      category: post.category,
+      text: post.text,
     },
+    post,
   });
-  
+
   const { formState } = form;
   const { isDirty, isValid, error } = formState;
-  
+
   const onSubmit = (post) => {
     updatePost(post, params);
-    router.push(`/blog/${params.id}`);
+    router.push(`/blog/${params}`);
   };
 
   return (
@@ -80,7 +107,7 @@ export default function EditPostPage({ params }) {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 w-full max-w-md space-y-2"
+            className="flex flex-col gap-4 w-full max-w-2xl space-y-2"
           >
             <FormField
               control={form.control}
@@ -91,9 +118,7 @@ export default function EditPostPage({ params }) {
                   <FormControl>
                     <Input placeholder="Название поста" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name
-                  </FormDescription>
+                  <FormDescription>Заголовок поста</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -149,9 +174,7 @@ export default function EditPostPage({ params }) {
                         Семейный адвокат
                       </SelectItem>
                     </SelectContent>
-                    <FormDescription>
-                      This is your public display name
-                    </FormDescription>
+                    <FormDescription>Выберите категорию</FormDescription>
                   </Select>
                   <FormMessage />
                 </FormItem>
@@ -172,7 +195,7 @@ export default function EditPostPage({ params }) {
                     />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name
+                    Добавьте ссылку на изображение
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -184,7 +207,7 @@ export default function EditPostPage({ params }) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Текст</FormLabel>
-                  <Tiptap {...field} content={text} />
+                  <Tiptap {...field} content={post.text} />
                   <FormDescription>Добавьте текст поста</FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -199,3 +222,7 @@ export default function EditPostPage({ params }) {
     </div>
   );
 }
+
+// netsh winsock reset
+// netsh int ip reset
+// reboot

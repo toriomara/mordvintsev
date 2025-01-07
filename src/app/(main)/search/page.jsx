@@ -3,7 +3,8 @@
 import Search from "@/components/Search";
 import { SearchedPosts } from "@/components/SearchedPosts";
 
-const SearchPage = ({ searchParams }) => {
+const SearchPage = async props => {
+  const searchParams = await props.searchParams;
   const query = searchParams?.query || "kdfjhgnvdklxjg";
 
   return (

@@ -1,11 +1,10 @@
 // url: http://localhost:3010/api/posts/post1
-
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
   try {
-    const { id } = params;
+    const { id } = await params;
     const post = await prisma.post.findUnique({
       where: { id },
     });
@@ -20,13 +19,14 @@ export const GET = async (request, { params }) => {
     return NextResponse.json(post);
   } catch (error) {
     return NextResponse.json(
-      { message: "Ошибка загрузки поста", error },
+      { message: "Ошибка загрузки поста111", error },
       { status: 500 }
     );
   }
 };
 
-export const PATCH = async (request, { params }) => {
+export const PATCH = async (request, props) => {
+  const params = await props.params;
   try {
     const { id } = params;
     const body = await request.json();
@@ -60,7 +60,8 @@ export const PATCH = async (request, { params }) => {
   }
 };
 
-export const DELETE = async (request, { params }) => {
+export const DELETE = async (request, props) => {
+  const params = await props.params;
   try {
     const { id } = params;
     await prisma.post.delete({
